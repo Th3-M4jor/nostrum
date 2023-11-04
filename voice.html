@@ -4,38 +4,55 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.25.1">
-    <meta name="project" content="Nostrum v0.4.7">
-    <title>Voice — Nostrum v0.4.7</title>
-    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
-    <script src="dist/sidebar_items-7e1ee19a00.js"></script>
+    <meta name="generator" content="ExDoc v0.29.4">
+    <meta name="project" content="Nostrum v0.9.0-alpha3">
+
+    <title>Voice — Nostrum v0.9.0-alpha3</title>
+    <link rel="stylesheet" href="dist/html-elixir-HHVY3JYD.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-XWGFFSCD.js"></script>
+    <script src="dist/sidebar_items-033B6DAD.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+    <script async src="dist/html-JDI3AVDD.js"></script>
+
+
   </head>
-  <body data-type="extras">
+  <body data-type="extras" class="page-extra">
     <script>
+
       try {
-        if (localStorage.getItem('night-mode') === 'true') {
-          document.body.classList.add('night-mode');
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
         }
       } catch (error) { }
     </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
     </label>
   </form>
 
@@ -45,33 +62,56 @@
   </div>
 
   <div class="sidebar-header">
+
     <div class="sidebar-projectDetails">
-      <a href="https://github.com/kraigie/nostrum" class="sidebar-projectName">
-Nostrum      </a>
-      <strong class="sidebar-projectVersion">
-        v0.4.7
-      </strong>
+      <a href="https://github.com/Kraigie/nostrum" class="sidebar-projectName" translate="no">
+Nostrum
+      </a>
+      <div class="sidebar-projectVersion" translate="no">
+        v0.9.0-alpha3
+      </div>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+        <li><a id="tasks-list-link" href="#full-list"><span translate="no">Mix</span> Tasks</a></li>
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
-
-      <li><a id="modules-list-link" href="#full-list">Modules</a></li>
-
-      <li><a id="tasks-list-link" href="#full-list">Mix Tasks</a></li>
-  </ul>
   <div class="gradient"></div>
-  <ul id="full-list" class="sidebar-fullList"></ul>
+  <ul id="full-list"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
+<h1>
+<button class="icon-action display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/Kraigie/nostrum/blob/master/guides/functionality/voice.md#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+
+  <span>Voice</span>
+</h1>
+
 <h2 id="voice-channels" class="section-heading">
-  <a href="#voice-channels" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Voice Channels
+  <a href="#voice-channels" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">voice-channels</p>
+  </a>
+  Voice channels
 </h2>
 <p>Discord voice channels allow audio data to be sent to the voice servers over UDP.
 A bot is able to connect to up to one voice channel per guild. One websocket
@@ -79,7 +119,9 @@ connection will be opened and maintained for each voice channel the bot joins.
 The websocket connection should reconnect automatically the same way that the 
 main Discord gateway websocket connections do. For available voice functions and
 usage see the <a href="Nostrum.Voice.html"><code class="inline">Nostrum.Voice</code></a> module.</p><h2 id="ffmpeg" class="section-heading">
-  <a href="#ffmpeg" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#ffmpeg" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">ffmpeg</p>
+  </a>
   FFmpeg
 </h2>
 <p>Nostrum uses the powerful <a href="https://ffmpeg.org/">ffmpeg</a> command line utility to
@@ -93,7 +135,9 @@ When playing from a url, the url can be a name of a file on the filesystem or a 
 of file on a remote server - <a href="https://www.ffmpeg.org/ffmpeg-protocols.html">ffmpeg supports a ton of protocols</a>,
 the most common of which are probably <code class="inline">http</code> or simply reading a file from the filesystem.
 It is also possible to send raw opus frames, bypassing ffmpeg, if desired.</p><h2 id="youtube-dl" class="section-heading">
-  <a href="#youtube-dl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#youtube-dl" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">youtube-dl</p>
+  </a>
   youtube-dl
 </h2>
 <p>With only <code class="inline">ffmpeg</code> installed, Nostrum supports playing audio/video files or raw, piped
@@ -104,8 +148,28 @@ Although the name implies support for Youtube, <code class="inline">youtube-dl</
 By default Nostrum will look for the executable <code class="inline">youtube-dl</code> in the system path. If the
 executable is elsewhere, the path may be configured via <code class="inline">config :nostrum, :youtubedl, &quot;/path/to/youtube-dl&quot;</code>.
 When <a href="Nostrum.Voice.html#play/4"><code class="inline">Nostrum.Voice.play/4</code></a> is called with <code class="inline">:ytdl</code> for the <code class="inline">type</code> parameter, <code class="inline">youtube-dl</code> will be
-run with options <code class="inline">-f bestaudio -q -o -</code>, which will attempt to download the audio at the given url and pipe it to <code class="inline">ffmpeg</code>.</p><h2 id="audio-timeout" class="section-heading">
-  <a href="#audio-timeout" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+run with options <code class="inline">-f bestaudio -q -o -</code>, which will attempt to download the audio at the given url and pipe it to <code class="inline">ffmpeg</code>.</p><h2 id="streamlink" class="section-heading">
+  <a href="#streamlink" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">streamlink</p>
+  </a>
+  streamlink
+</h2>
+<p>Nostrum also has support for <code class="inline">streamlink</code>, yet another powerful command line utility 
+for downloading live streams from online video streaming services.
+By default Nostrum will look for the executable <code class="inline">streamlink</code> in the system path. 
+If the executable is elsewhere, the path may be configured via <code class="inline">config :nostrum, :streamlink, &quot;/path/to/streamlink&quot;</code>.
+When <a href="Nostrum.Voice.html#play/4"><code class="inline">Nostrum.Voice.play/4</code></a> is called with <code class="inline">:stream</code> for the <code class="inline">type</code> parameter, <code class="inline">streamlink</code> 
+will attempt to download the live stream content and pipe it to <code class="inline">ffmpeg</code>.
+It's recommended to use the most up-to-date version of <code class="inline">streamlink</code> to properly
+play human-readable URLs from services such as Youtube and Twitch. Version 3.x.x
+currently works with both of these services. If the short, human-readable url of the streaming service
+doesn't work with <code class="inline">streamlink</code> out of the box, you may have more luck extracting the underlying raw stream url.
+These are typically long URLs that end in <code class="inline">.m3u8</code> or <code class="inline">.hls</code>. If you have <code class="inline">youtube-dl</code> installed,
+you can attempt to get this URL by running the following:</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="4133429893-1">{</span><span class="n">raw_url</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="4133429893-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">System</span><span class="o">.</span><span class="n">cmd</span><span class="p" data-group-id="4133429893-2">(</span><span class="s">&quot;youtube-dl&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4133429893-3">[</span><span class="s">&quot;-f&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;best&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p" data-group-id="4133429893-3">]</span><span class="p" data-group-id="4133429893-2">)</span><span class="w">
+</span><span class="n">raw_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">raw_url</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">String</span><span class="o">.</span><span class="n">trim</span><span class="p" data-group-id="4133429893-4">(</span><span class="p" data-group-id="4133429893-4">)</span></code></pre><h2 id="audio-timeout" class="section-heading">
+  <a href="#audio-timeout" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">audio-timeout</p>
+  </a>
   Audio Timeout
 </h2>
 <p>Upon invoking <a href="Nostrum.Voice.html#play/4"><code class="inline">Nostrum.Voice.play/4</code></a>, the player process has a large configurable initial window
@@ -113,67 +177,153 @@ run with options <code class="inline">-f bestaudio -q -o -</code>, which will at
 ample time for slow networks to download large audio/video files. This configurable timeout only applies to when
 <code class="inline">play</code> is initially invoked; once audio has begun transmitting, the timeout drops to <code class="inline">500</code> milliseconds.
 Because the <code class="inline">ffmpeg</code> process doesn't close when its input device is <code class="inline">stdin</code>, which is the case
-with <code class="inline">type</code> is set to <code class="inline">:pipe</code> or <code class="inline">:ytdl</code>, the timeout is necessary to promtly detect end of input.
-If the audio process times out with the initial window, the <a href="Nostrum.Struct.Event.SpeakingUpdate.html"><code class="inline">Nostrum.Struct.Event.SpeakingUpdate</code></a>
+when <code class="inline">type</code> is set to <code class="inline">:pipe</code>, <code class="inline">:ytdl</code>, or <code class="inline">:stream</code> the timeout is necessary to promptly detect end of input.
+If the audio process times out within the initial window, the <a href="Nostrum.Struct.Event.SpeakingUpdate.html"><code class="inline">Nostrum.Struct.Event.SpeakingUpdate</code></a>
 that is generated will have its <code class="inline">timed_out</code> field set to <code class="inline">true</code>. It will be <code class="inline">false</code> in all other cases.
 If your use case does not include large, slow downloads and you wish to more quickly be notified
 of timeouts or errors, you may consider setting <code class="inline">audio_timeout</code> to a lower value.
 However, <code class="inline">youtube-dl</code> typically takes at least 2.5 seconds to begin outputting audio data,
 even on a fast connection.
 If your use case involves playing large files at a timestamp several hours in like this,
-<code class="inline">play(guild_id, url, :ytdl, start_time: &quot;2:37:56&quot;)</code>, you may consider setting the timeout to a higher value, as downloading a large youtube video and having <code class="inline">ffmpeg</code> seek through several hours
-of audio may take 15-20 seconds, even with a fast network connection.</p><div class="bottom-actions">
+<code class="inline">play(guild_id, url, :ytdl, start_time: &quot;2:37:56&quot;)</code>, you may consider setting the timeout to a higher value,
+as downloading a large youtube video and having <code class="inline">ffmpeg</code> seek through several hours
+of audio may take 15-20 seconds, even with a fast network connection.</p><h2 id="audio-frames-per-burst" class="section-heading">
+  <a href="#audio-frames-per-burst" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">audio-frames-per-burst</p>
+  </a>
+  Audio Frames Per Burst
+</h2>
+<p>The value <code class="inline">:audio_frames_per_burst</code> represents the number of consecutive packets to send before resting.
+When using <a href="Nostrum.Voice.html#play/4"><code class="inline">Nostrum.Voice.play/4</code></a> to play audio, Nostrum collects a number of opus frames from the 
+audio input source before sending them all to Discord as a &quot;burst&quot; of ordered frames. 
+This is done to reduce the overhead of process-sleeping and setup.
+For reference, a single opus frame is 20 milliseconds of audio (at least for the format that Discord uses).
+By default, the <code class="inline">:audio_frames_per_burst</code> is set to <code class="inline">10</code>, equivalent to 200 milliseconds of audio.</p><p>Under normal circumstances, there's no reason to change this value. However, if you attempt to play a very short
+piece of audio that's less than <code class="inline">10</code> frames (200ms) in length, it will time out (after the configured 
+<code class="inline">:audio_timeout</code> duration has passed) as it waits to collect <code class="inline">10</code> frames to send. For those cases, configure the
+value to <em>at most</em> the minimum frame length of the audio you intend to play, or simply <code class="inline">1</code>. Setting the value to <code class="inline">1</code>
+means that each opus frame from your audio source will be taken individually and be sent in its own &quot;burst&quot; with the 
+player process sleeping between each; you likely won't notice a difference in audio playback quality compared to the 
+default value of <code class="inline">10</code> other than that your sub-200ms audio files will play as expected.</p><h2 id="voice-events" class="section-heading">
+  <a href="#voice-events" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">voice-events</p>
+  </a>
+  Voice Events
+</h2>
+<p>There are a few voice related events that bots can consume with a <a href="Nostrum.Consumer.html"><code class="inline">Nostrum.Consumer</code></a> process:</p><ul><li><a href="Nostrum.Consumer.html#t:voice_state_update/0"><code class="inline">Nostrum.Consumer.voice_state_update/0</code></a></li><li><a href="Nostrum.Consumer.html#t:voice_server_update/0"><code class="inline">Nostrum.Consumer.voice_server_update/0</code></a></li><li><a href="Nostrum.Consumer.html#t:voice_speaking_update/0"><code class="inline">Nostrum.Consumer.voice_speaking_update/0</code></a></li><li><a href="Nostrum.Consumer.html#t:voice_ready/0"><code class="inline">Nostrum.Consumer.voice_ready/0</code></a></li><li><a href="Nostrum.Consumer.html#t:voice_incoming_packet/0"><code class="inline">Nostrum.Consumer.voice_incoming_packet/0</code></a></li></ul><p>Both <a href="Nostrum.Consumer.html#t:voice_state_update/0"><code class="inline">Nostrum.Consumer.voice_state_update/0</code></a> and <a href="Nostrum.Consumer.html#t:voice_server_update/0"><code class="inline">Nostrum.Consumer.voice_server_update/0</code></a> 
+are sent by the shard gateway session when a bot joins a voice channel. The receipt of both of 
+these events is required for a voice gateway session to begin, and it happens automatically when 
+joining a channel. The <a href="Nostrum.Consumer.html#t:voice_state_update/0"><code class="inline">Nostrum.Consumer.voice_state_update/0</code></a> event is also sent every time 
+any user joins or leaves a voice channel, and <a href="Nostrum.Struct.Guild.html#t:voice_states/0"><code class="inline">Nostrum.Struct.Guild.voice_states/0</code></a> is 
+automatically updated within the guild cache to reflect current state of voice channels.</p><p>A use case for listening to both <a href="Nostrum.Consumer.html#t:voice_state_update/0"><code class="inline">Nostrum.Consumer.voice_state_update/0</code></a> and 
+<a href="Nostrum.Consumer.html#t:voice_server_update/0"><code class="inline">Nostrum.Consumer.voice_server_update/0</code></a> events would be to outsource voice connections to 
+an application outside of Nostrum. This can be done by setting the config option 
+<code class="inline">:voice_auto_connect</code> to <code class="inline">false</code> and taking the session and token information 
+from both of the events and passing them to your external voice app. 
+Outside of this niche use case, another use case for listening solely to the
+<a href="Nostrum.Consumer.html#t:voice_state_update/0"><code class="inline">Nostrum.Consumer.voice_state_update/0</code></a> event would be to detect when users join or leave 
+voice channels.</p><p>The <a href="Nostrum.Consumer.html#t:voice_speaking_update/0"><code class="inline">Nostrum.Consumer.voice_speaking_update/0</code></a> event is generated by Nostrum for convenience. It is 
+sent every time the bot starts or stops speaking/sending audio. A use case for this event is if 
+you have a queue of URLs to play, listening to the <a href="Nostrum.Consumer.html#t:voice_speaking_update/0"><code class="inline">Nostrum.Consumer.voice_speaking_update/0</code></a> 
+will let the bot know when the current URL has finished playing and that it should begin playing 
+the next one in the queue. The alternative approach for this use case that is not event-driven 
+is to periodically call <a href="Nostrum.Voice.html#playing?/1"><code class="inline">Nostrum.Voice.playing?/1</code></a> and wait for it to return <code class="inline">false</code> as the 
+trigger to play the next URL. Note that the third element in the event is of type
+<a href="Nostrum.Struct.VoiceWSState.html#t:t/0"><code class="inline">Nostrum.Struct.VoiceWSState.t/0</code></a> and not <a href="Nostrum.Struct.WSState.html#t:t/0"><code class="inline">Nostrum.Struct.WSState.t/0</code></a>.</p><p>The <a href="Nostrum.Consumer.html#t:voice_ready/0"><code class="inline">Nostrum.Consumer.voice_ready/0</code></a> event is generated by Nostrum for convenience. It is sent
+when the bot is ready to begin sending audio data upon joining a voice channel. From the moment
+the bot joins a voice channel, Nostrum handles the multi-step handshaking process that is 
+required before any audio packets can be sent or received. It is a common use case for bots to
+immediately begin playing audio upon joining a voice channel. Calling <a href="Nostrum.Voice.html#play/4"><code class="inline">Nostrum.Voice.play/4</code></a>
+directly after calling <a href="Nostrum.Voice.html#join_channel/4"><code class="inline">Nostrum.Voice.join_channel/4</code></a> will always return an error as several
+network actions must take place before playing audio is possible. Listening for the
+<a href="Nostrum.Consumer.html#t:voice_ready/0"><code class="inline">Nostrum.Consumer.voice_ready/0</code></a> event can be used by the bot to begin playing audio as soon 
+as it is able to. The alternative approach for this use case that is not event-driven is to 
+periodically call <a href="Nostrum.Voice.html#ready?/1"><code class="inline">Nostrum.Voice.ready?/1</code></a> and wait for it to return <code class="inline">true</code> as the trigger to
+begin playing. Another common approach is to define a <code class="inline">try_play</code> function as follows:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">try_play</span><span class="p" data-group-id="1357427340-1">(</span><span class="n">guild_id</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="p" data-group-id="1357427340-2">[</span><span class="p" data-group-id="1357427340-2">]</span><span class="p" data-group-id="1357427340-1">)</span><span class="w"> </span><span class="k" data-group-id="1357427340-3">do</span><span class="w">
+  </span><span class="k">case</span><span class="w"> </span><span class="nc">Nostrum.Voice</span><span class="o">.</span><span class="n">play</span><span class="p" data-group-id="1357427340-4">(</span><span class="n">guild_id</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p" data-group-id="1357427340-4">)</span><span class="w"> </span><span class="k" data-group-id="1357427340-5">do</span><span class="w">
+    </span><span class="p" data-group-id="1357427340-6">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="c">_msg</span><span class="p" data-group-id="1357427340-6">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+      </span><span class="nc">Process</span><span class="o">.</span><span class="n">sleep</span><span class="p" data-group-id="1357427340-7">(</span><span class="mi">100</span><span class="p" data-group-id="1357427340-7">)</span><span class="w">
+      </span><span class="n">try_play</span><span class="p" data-group-id="1357427340-8">(</span><span class="n">guild_id</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p" data-group-id="1357427340-8">)</span><span class="w">
+
+    </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+      </span><span class="ss">:ok</span><span class="w">
+  </span><span class="k" data-group-id="1357427340-5">end</span><span class="w">
+</span><span class="k" data-group-id="1357427340-3">end</span></code></pre><p>Note that the third element in the event is of type <a href="Nostrum.Struct.VoiceWSState.html#t:t/0"><code class="inline">Nostrum.Struct.VoiceWSState.t/0</code></a> and 
+not <a href="Nostrum.Struct.WSState.html#t:t/0"><code class="inline">Nostrum.Struct.WSState.t/0</code></a>.</p><p>The <a href="Nostrum.Consumer.html#t:voice_incoming_packet/0"><code class="inline">Nostrum.Consumer.voice_incoming_packet/0</code></a> event is generated by Nostrum. None will be generated
+by default. You must first be connected to a voice channel, call the <a href="Nostrum.Voice.html#start_listen_async/1"><code class="inline">Nostrum.Voice.start_listen_async/1</code></a>
+function, then have another user in the same voice channel speak. If these conditions are met, an event
+will be received for each RTP packet the bot receives; 50 packets per 1 second for each user that is
+actively speaking. These events are only useful if you intend to listen to incoming audio and are disabled
+by default. An alternative approach to listening to incoming audio that is not event driven is to call
+<a href="Nostrum.Voice.html#listen/3"><code class="inline">Nostrum.Voice.listen/3</code></a>. This function blocks until the specified number of RTP packets is received.
+<a href="Nostrum.Voice.html#listen/3"><code class="inline">Nostrum.Voice.listen/3</code></a> has the additional features of removing duplicate RTP packets within the set of
+packets returned per invocation and the option to return the raw RTP packet. In practice these features
+likely won't be missed when consuming incoming voice packets asynchronously.
+Note that the third element in the event is of type
+<a href="Nostrum.Struct.VoiceWSState.html#t:t/0"><code class="inline">Nostrum.Struct.VoiceWSState.t/0</code></a> and not <a href="Nostrum.Struct.WSState.html#t:t/0"><code class="inline">Nostrum.Struct.WSState.t/0</code></a>.</p>
+<div class="bottom-actions">
   <div class="bottom-actions-item">
-      <a href="consumers.html" class="bottom-actions-button" rel="prev">
+
+      <a href="event_handling.html" class="bottom-actions-button" rel="prev">
         <span class="subheader">
           ← Previous Page
         </span>
         <span class="title">
-Consumers        </span>
+Event handling
+        </span>
       </a>
+
   </div>
   <div class="bottom-actions-item">
-      <a href="gateway-intents.html" class="bottom-actions-button" rel="next">
+
+      <a href="pluggable_caching.html" class="bottom-actions-button" rel="next">
         <span class="subheader">
           Next Page →
         </span>
         <span class="title">
-Gateway Intents        </span>
+Pluggable caching
+        </span>
       </a>
+
   </div>
 </div>
       <footer class="footer">
         <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/nostrum/0.9.0-alpha3" class="footer-hex-package">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3/show/guides/functionality/voice.md">current file</a>)
+
+            </span>
+
           <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.25.1) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="Nostrum.epub" title="ePub version">
+                Download ePub version
+              </a>
+
           </span>
         </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.4) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>

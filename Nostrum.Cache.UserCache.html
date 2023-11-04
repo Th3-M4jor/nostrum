@@ -4,38 +4,55 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.25.1">
-    <meta name="project" content="Nostrum v0.4.7">
-    <title>Nostrum.Cache.UserCache — Nostrum v0.4.7</title>
-    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
-    <script src="dist/sidebar_items-7e1ee19a00.js"></script>
+    <meta name="generator" content="ExDoc v0.29.4">
+    <meta name="project" content="Nostrum v0.9.0-alpha3">
+
+    <title>Nostrum.Cache.UserCache — Nostrum v0.9.0-alpha3</title>
+    <link rel="stylesheet" href="dist/html-elixir-HHVY3JYD.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-XWGFFSCD.js"></script>
+    <script src="dist/sidebar_items-033B6DAD.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+    <script async src="dist/html-JDI3AVDD.js"></script>
+
+
   </head>
-  <body data-type="modules">
+  <body data-type="modules" class="page-behaviour">
     <script>
+
       try {
-        if (localStorage.getItem('night-mode') === 'true') {
-          document.body.classList.add('night-mode');
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
         }
       } catch (error) { }
     </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
     </label>
   </form>
 
@@ -45,171 +62,605 @@
   </div>
 
   <div class="sidebar-header">
+
     <div class="sidebar-projectDetails">
-      <a href="https://github.com/kraigie/nostrum" class="sidebar-projectName">
-Nostrum      </a>
-      <strong class="sidebar-projectVersion">
-        v0.4.7
-      </strong>
+      <a href="https://github.com/Kraigie/nostrum" class="sidebar-projectName" translate="no">
+Nostrum
+      </a>
+      <div class="sidebar-projectVersion" translate="no">
+        v0.9.0-alpha3
+      </div>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+        <li><a id="tasks-list-link" href="#full-list"><span translate="no">Mix</span> Tasks</a></li>
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
-
-      <li><a id="modules-list-link" href="#full-list">Modules</a></li>
-
-      <li><a id="tasks-list-link" href="#full-list">Mix Tasks</a></li>
-  </ul>
   <div class="gradient"></div>
-  <ul id="full-list" class="sidebar-fullList"></ul>
+  <ul id="full-list"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-      <h1>
-        Nostrum.Cache.UserCache <small class="app-vsn">(Nostrum v0.4.7)</small>
-          <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L1" title="View Source" class="view-source" rel="help">
-            <span class="icon-code" aria-hidden="true"></span>
-            <span class="sr-only">View Source</span>
-          </a>
-      </h1>
+<h1>
+<button class="icon-action display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
 
 
-        <section id="moduledoc">
-<p>Cache for users.</p><p>The ETS table name associated with the User Cache is <code class="inline">:users</code>. Besides the
-methods provided below you can call any other ETS methods on the table.</p><h2 id="module-example" class="section-heading">
-  <a href="#module-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Example
-</h2>
-<pre><code class="makeup elixir"><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:ets</span><span class="o">.</span><span class="n">info</span><span class="p" data-group-id="4422842351-1">(</span><span class="ss">:users</span><span class="p" data-group-id="4422842351-1">)</span><span class="w">
-</span><span class="p" data-group-id="4422842351-2">[</span><span class="n">...</span><span class="p">,</span><span class="w"> </span><span class="ss">heir</span><span class="p">:</span><span class="w"> </span><span class="ss">:none</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:users</span><span class="p">,</span><span class="w"> </span><span class="ss">size</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="4422842351-2">]</span><span class="w">
-</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">info</span><span class="p" data-group-id="4422842351-3">[</span><span class="ss">:size</span><span class="p" data-group-id="4422842351-3">]</span><span class="w">
-</span><span class="mi">1</span></code></pre>        </section>
-
-        <section id="summary" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#summary">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-            Summary
-          </h1>
-  <div class="summary-functions summary">
-    <h2>
-      <a href="#functions">Functions</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#get/1">get(id)</a>
-  </div>
-    <div class="summary-synopsis"><p>Retrieves a user from the cache by id.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#get!/1">get!(id)</a>
-  </div>
-    <div class="summary-synopsis"><p>Same as <a href="#get/1"><code class="inline">get/1</code></a>, but raises <a href="Nostrum.Error.CacheError.html"><code class="inline">Nostrum.Error.CacheError</code></a> in case of a failure.</p></div>
-</div>
-  </div>
-        </section>
-
-        <section id="functions" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#functions">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Functions          </h1>
-          <div class="functions-list">
-<section class="detail" id="get/1">
-  <div class="detail-header">
-    <a href="#get/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
+    <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
     </a>
-    <h1 class="signature">get(id)</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L38" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+
+  <span translate="no">Nostrum.Cache.UserCache</span> <small>behaviour</small>
+  <small class="app-vsn" translate="no">(Nostrum v0.9.0-alpha3)</small>
+
+</h1>
+
+
+  <section id="moduledoc">
+<p>Cache behaviour &amp; dispatcher for users.</p><p>You can call the functions provided by this module independent of which cache
+is configured, and it will dispatch to the configured cache implementation.</p><p>By default, Elixir.Nostrum.Cache.UserCache.ETS will be used for caching users.
+You can override this in the <code class="inline">:caches</code> option of the <code class="inline">:nostrum</code> application
+by setting the <code class="inline">:users</code> field to a different module implementing the behaviour
+defined by this module.</p><p>See the documentation for the <a href="Nostrum.Cache.GuildCache.html"><code class="inline">Nostrum.Cache.GuildCache</code></a> module for more details.</p>
+  </section>
+
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+      Summary
+    </h1>
+<div class="summary-callbacks summary">
+  <h2>
+    <a href="#callbacks">Callbacks</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:bulk_create/1" translate="no">bulk_create(user_payloads)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Bulk add multiple users to the cache at once.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:child_spec/1" translate="no">child_spec(term)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Retrieve the child specification for starting this mapping under a supervisor.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:create/1" translate="no">create(payload)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Add a new user to the cache based on the Discord Gateway payload.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:delete/1" translate="no">delete(snowflake)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Delete a user by ID.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:query_handle/0" translate="no">query_handle()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Return a query handle for usage with <code class="inline">:qlc</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:update/1" translate="no">update(payload)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Update a user in the cache based on payload sent via the Gateway.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:wrap_qlc/1" translate="no">wrap_qlc(function)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A function that should wrap any <code class="inline">:qlc</code> operations.</p></div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get/2" translate="no">get(user_id, cache \\ Nostrum.Cache.UserCache.ETS)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Retrieves a user from the cache by id.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get!/1" translate="no">get!(id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Same as <a href="#get/1"><code class="inline">get/1</code></a>, but raises <a href="Nostrum.Error.CacheError.html"><code class="inline">Nostrum.Error.CacheError</code></a> in case of a failure.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#query_handle/0" translate="no">query_handle()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Call <a href="#c:query_handle/0"><code class="inline">query_handle/0</code></a> on the configured cache.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#wrap_qlc/2" translate="no">wrap_qlc(cache \\ Nostrum.Cache.UserCache.ETS, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Call <a href="#c:wrap_qlc/1"><code class="inline">wrap_qlc/1</code></a> on the given cache, if implemented.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="callbacks" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#callbacks">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Callbacks
+    </h1>
+    <div class="callbacks-list">
+<section class="detail" id="c:bulk_create/1">
+
+  <div class="detail-header">
+    <a href="#c:bulk_create/1" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">bulk_create(user_payloads)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L71" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>get(<a href="Nostrum.Struct.User.html#t:id/0">Nostrum.Struct.User.id</a>()) ::
-  {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()} | {:ok, <a href="Nostrum.Struct.User.html#t:t/0">Nostrum.Struct.User.t</a>()}</pre>
+
+          <pre translate="no"><span class="attribute">@callback</span> bulk_create(user_payloads :: <a href="https://hexdocs.pm/elixir/Enum.html#t:t/0">Enum.t</a>()) :: :ok</pre>
+
       </div>
 
-<p>Retrieves a user from the cache by id.</p><p>If successful, returns <code class="inline">{:ok, user}</code>. Otherwise, returns <code class="inline">{:error, reason}</code>.</p><h2 id="get/1-example" class="section-heading">
-  <a href="#get/1-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+<p>Bulk add multiple users to the cache at once.</p><p>Returns <code class="inline">:ok</code>.</p>
+  </section>
+</section>
+<section class="detail" id="c:child_spec/1">
+
+  <div class="detail-header">
+    <a href="#c:child_spec/1" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">child_spec(term)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L123" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> child_spec(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/elixir/Supervisor.html#t:child_spec/0">Supervisor.child_spec</a>()</pre>
+
+      </div>
+
+<p>Retrieve the child specification for starting this mapping under a supervisor.</p>
+  </section>
+</section>
+<section class="detail" id="c:create/1">
+
+  <div class="detail-header">
+    <a href="#c:create/1" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">create(payload)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L64" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> create(payload :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="Nostrum.Struct.User.html#t:t/0">Nostrum.Struct.User.t</a>()</pre>
+
+      </div>
+
+<p>Add a new user to the cache based on the Discord Gateway payload.</p><p>Returns a <a href="Nostrum.Struct.User.html#t:t/0"><code class="inline">Nostrum.Struct.User.t/0</code></a> struct representing the created user.</p>
+  </section>
+</section>
+<section class="detail" id="c:delete/1">
+
+  <div class="detail-header">
+    <a href="#c:delete/1" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">delete(snowflake)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L87" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> delete(snowflake :: <a href="Nostrum.Struct.User.html#t:id/0">Nostrum.Struct.User.id</a>()) :: :noop | <a href="Nostrum.Struct.User.html#t:t/0">Nostrum.Struct.User.t</a>()</pre>
+
+      </div>
+
+<p>Delete a user by ID.</p><p>Returns the deleted user if present in the cache, or
+<code class="inline">:noop</code> if the user was not cached.</p>
+  </section>
+</section>
+<section class="detail" id="c:query_handle/0">
+
+  <div class="detail-header">
+    <a href="#c:query_handle/0" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">query_handle()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L104" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.7.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> query_handle() :: <a href="https://www.erlang.org/doc/man/qlc.html#type-query_handle">:qlc.query_handle</a>()</pre>
+
+      </div>
+
+<p>Return a query handle for usage with <code class="inline">:qlc</code>.</p><p>This is used by nostrum to provide automatic joins between the member and the
+user cache, and may be used for other functions in the future.</p><p>The Erlang manual on <a href="https://www.erlang.org/doc/man/qlc.html#implementing_a_qlc_table">Implementing a QLC
+Table</a>
+contains examples for implementation.</p><p>The query handle must return items in the form <code class="inline">{user_id, user}</code>, where
+<code class="inline">user_id</code> is a <a href="Nostrum.Struct.User.html#t:id/0"><code class="inline">Nostrum.Struct.User.id/0</code></a> and <code class="inline">user</code> is a
+<a href="Nostrum.Struct.User.html#t:t/0"><code class="inline">Nostrum.Struct.User.t/0</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="c:update/1">
+
+  <div class="detail-header">
+    <a href="#c:update/1" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">update(payload)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L79" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> update(payload :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  {<a href="Nostrum.Struct.User.html#t:t/0">Nostrum.Struct.User.t</a>() | nil, <a href="Nostrum.Struct.User.html#t:t/0">Nostrum.Struct.User.t</a>()}</pre>
+
+      </div>
+
+<p>Update a user in the cache based on payload sent via the Gateway.</p><p>Returns <code class="inline">:noop</code> if the user has not been updated in the cache, or
+<code class="inline">{old_user, new_user}</code> is the user has been written to the cache.</p>
+  </section>
+</section>
+<section class="detail" id="c:wrap_qlc/1">
+
+  <div class="detail-header">
+    <a href="#c:wrap_qlc/1" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">wrap_qlc(function)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L117" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+      <span class="note">(since 0.8.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> wrap_qlc((-&gt; result)) :: result when result: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+
+      </div>
+
+<p>A function that should wrap any <code class="inline">:qlc</code> operations.</p><p>If you implement a cache that is backed by a database and want to perform
+cleanup and teardown actions such as opening and closing connections,
+managing transactions and so on, you want to implement this function. Nostrum
+will then effectively call <code class="inline">wrap_qlc(fn -&gt; :qlc.e(...) end)</code>.</p><p>If your cache does not need any wrapping, you can omit this.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Functions
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="get/2">
+
+    <span id="get/1"></span>
+
+  <div class="detail-header">
+    <a href="#get/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get(user_id, cache \\ Nostrum.Cache.UserCache.ETS)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L45" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get(<a href="Nostrum.Struct.User.html#t:id/0">Nostrum.Struct.User.id</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()) ::
+  {:ok, <a href="Nostrum.Struct.User.html#t:t/0">Nostrum.Struct.User.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+
+      </div>
+
+<p>Retrieves a user from the cache by id.</p><p>This function can be called with the cache to use as an optional argument. By
+default, the cache configured at compile time is used.</p><h2 id="get/2-example" class="section-heading">
+  <a href="#get/2-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">example</p>
+  </a>
   Example
 </h2>
-<pre><code class="makeup elixir"><span class="k">case</span><span class="w"> </span><span class="nc">Nostrum.Cache.UserCache</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="8356009858-1">(</span><span class="mi">1111222233334444</span><span class="p" data-group-id="8356009858-1">)</span><span class="w"> </span><span class="k" data-group-id="8356009858-2">do</span><span class="w">
-  </span><span class="p" data-group-id="8356009858-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p" data-group-id="8356009858-3">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="k">case</span><span class="w"> </span><span class="nc">Nostrum.Cache.UserCache</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="0166812594-1">(</span><span class="mi">1111222233334444</span><span class="p" data-group-id="0166812594-1">)</span><span class="w"> </span><span class="k" data-group-id="0166812594-2">do</span><span class="w">
+  </span><span class="p" data-group-id="0166812594-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p" data-group-id="0166812594-3">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
     </span><span class="s">&quot;We found &quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="w">
-  </span><span class="p" data-group-id="8356009858-4">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="c">_reason</span><span class="p" data-group-id="8356009858-4">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="p" data-group-id="0166812594-4">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="c">_reason</span><span class="p" data-group-id="0166812594-4">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
     </span><span class="s">&quot;No es bueno&quot;</span><span class="w">
-</span><span class="k" data-group-id="8356009858-2">end</span></code></pre>  </section>
+</span><span class="k" data-group-id="0166812594-2">end</span></code></pre>
+  </section>
 </section>
 <section class="detail" id="get!/1">
+
   <div class="detail-header">
     <a href="#get!/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">get!(id)</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L49" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">get!(id)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L129" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>get!(<a href="Nostrum.Struct.User.html#t:id/0">Nostrum.Struct.User.id</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>() | <a href="Nostrum.Struct.User.html#t:t/0">Nostrum.Struct.User.t</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@spec</span> get!(<a href="Nostrum.Struct.User.html#t:id/0">Nostrum.Struct.User.id</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>() | <a href="Nostrum.Struct.User.html#t:t/0">Nostrum.Struct.User.t</a>()</pre>
+
       </div>
 
-<p>Same as <a href="#get/1"><code class="inline">get/1</code></a>, but raises <a href="Nostrum.Error.CacheError.html"><code class="inline">Nostrum.Error.CacheError</code></a> in case of a failure.</p>  </section>
+<p>Same as <a href="#get/1"><code class="inline">get/1</code></a>, but raises <a href="Nostrum.Error.CacheError.html"><code class="inline">Nostrum.Error.CacheError</code></a> in case of a failure.</p>
+  </section>
 </section>
-          </div>
-        </section>
+<section class="detail" id="query_handle/0">
+
+  <div class="detail-header">
+    <a href="#query_handle/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">query_handle()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L134" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.8.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> query_handle() :: <a href="https://www.erlang.org/doc/man/qlc.html#type-query_handle">:qlc.query_handle</a>()</pre>
+
+      </div>
+
+<p>Call <a href="#c:query_handle/0"><code class="inline">query_handle/0</code></a> on the configured cache.</p>
+  </section>
+</section>
+<section class="detail" id="wrap_qlc/2">
+
+    <span id="wrap_qlc/1"></span>
+
+  <div class="detail-header">
+    <a href="#wrap_qlc/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">wrap_qlc(cache \\ Nostrum.Cache.UserCache.ETS, fun)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/cache/user_cache.ex#L144" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.8.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> wrap_qlc(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), (-&gt; result)) :: result when result: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+
+      </div>
+
+<p>Call <a href="#c:wrap_qlc/1"><code class="inline">wrap_qlc/1</code></a> on the given cache, if implemented.</p><p>If no cache is given, calls out to the default cache.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
       <footer class="footer">
         <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/nostrum/0.9.0-alpha3" class="footer-hex-package">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3/show/lib/nostrum/cache/user_cache.ex">current file</a>)
+
+            </span>
+
           <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.25.1) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="Nostrum.epub" title="ePub version">
+                Download ePub version
+              </a>
+
           </span>
         </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.4) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>

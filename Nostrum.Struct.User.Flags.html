@@ -4,38 +4,55 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.25.1">
-    <meta name="project" content="Nostrum v0.4.7">
-    <title>Nostrum.Struct.User.Flags — Nostrum v0.4.7</title>
-    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
-    <script src="dist/sidebar_items-7e1ee19a00.js"></script>
+    <meta name="generator" content="ExDoc v0.29.4">
+    <meta name="project" content="Nostrum v0.9.0-alpha3">
+
+    <title>Nostrum.Struct.User.Flags — Nostrum v0.9.0-alpha3</title>
+    <link rel="stylesheet" href="dist/html-elixir-HHVY3JYD.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-XWGFFSCD.js"></script>
+    <script src="dist/sidebar_items-033B6DAD.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+    <script async src="dist/html-JDI3AVDD.js"></script>
+
+
   </head>
-  <body data-type="modules">
+  <body data-type="modules" class="page-module">
     <script>
+
       try {
-        if (localStorage.getItem('night-mode') === 'true') {
-          document.body.classList.add('night-mode');
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
         }
       } catch (error) { }
     </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
     </label>
   </form>
 
@@ -45,250 +62,363 @@
   </div>
 
   <div class="sidebar-header">
+
     <div class="sidebar-projectDetails">
-      <a href="https://github.com/kraigie/nostrum" class="sidebar-projectName">
-Nostrum      </a>
-      <strong class="sidebar-projectVersion">
-        v0.4.7
-      </strong>
+      <a href="https://github.com/Kraigie/nostrum" class="sidebar-projectName" translate="no">
+Nostrum
+      </a>
+      <div class="sidebar-projectVersion" translate="no">
+        v0.9.0-alpha3
+      </div>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+        <li><a id="tasks-list-link" href="#full-list"><span translate="no">Mix</span> Tasks</a></li>
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
-
-      <li><a id="modules-list-link" href="#full-list">Modules</a></li>
-
-      <li><a id="tasks-list-link" href="#full-list">Mix Tasks</a></li>
-  </ul>
   <div class="gradient"></div>
-  <ul id="full-list" class="sidebar-fullList"></ul>
+  <ul id="full-list"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-      <h1>
-        Nostrum.Struct.User.Flags <small class="app-vsn">(Nostrum v0.4.7)</small>
-          <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L1" title="View Source" class="view-source" rel="help">
-            <span class="icon-code" aria-hidden="true"></span>
-            <span class="sr-only">View Source</span>
-          </a>
-      </h1>
+<h1>
+<button class="icon-action display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
 
 
-        <section id="moduledoc">
-<p>Struct representing the flags a user account can have</p>        </section>
+    <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
 
-        <section id="summary" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#summary">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-            Summary
-          </h1>
-  <div class="summary-types summary">
-    <h2>
-      <a href="#types">Types</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:bug_hunter_level_1/0">bug_hunter_level_1()</a>
-  </div>
-    <div class="summary-synopsis"><p>Bug Hunter (Level 1)</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:bug_hunter_level_2/0">bug_hunter_level_2()</a>
-  </div>
-    <div class="summary-synopsis"><p>Bug Hunter (Level 2)</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:early_supporter/0">early_supporter()</a>
-  </div>
-    <div class="summary-synopsis"><p>Early Supporter</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:flags/0">flags()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:hypesquad_balance/0">hypesquad_balance()</a>
-  </div>
-    <div class="summary-synopsis"><p>HypeSquad Balance</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:hypesquad_bravery/0">hypesquad_bravery()</a>
-  </div>
-    <div class="summary-synopsis"><p>HypeSquad Bravery</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:hypesquad_brilliance/0">hypesquad_brilliance()</a>
-  </div>
-    <div class="summary-synopsis"><p>HypeSquad Brilliance</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:hypesquad_events/0">hypesquad_events()</a>
-  </div>
-    <div class="summary-synopsis"><p>HypeSquad Events</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:partner/0">partner()</a>
-  </div>
-    <div class="summary-synopsis"><p>Discord Partner</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:staff/0">staff()</a>
-  </div>
-    <div class="summary-synopsis"><p>Discord Employee</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:system/0">system()</a>
-  </div>
-    <div class="summary-synopsis"><p>System user</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:t/0">t()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:team_user/0">team_user()</a>
-  </div>
-    <div class="summary-synopsis"><p>Team User</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:verified_bot/0">verified_bot()</a>
-  </div>
-    <div class="summary-synopsis"><p>Verified bot</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:verified_developer/0">verified_developer()</a>
-  </div>
-    <div class="summary-synopsis"><p>Verified developer</p></div>
-</div>
-  </div>
-  <div class="summary-functions summary">
-    <h2>
-      <a href="#functions">Functions</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#from_integer/1">from_integer(flag_value)</a>
-  </div>
-    <div class="summary-synopsis"><p>Constructs a flag struct based on an integer from the Discord API (either public_flags or flags).</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#to_integer/1">to_integer(flag_struct)</a>
-  </div>
-    <div class="summary-synopsis"><p>Convert a flag struct to an integer value.</p></div>
-</div>
-  </div>
-        </section>
+  <span translate="no">Nostrum.Struct.User.Flags</span> 
+  <small class="app-vsn" translate="no">(Nostrum v0.9.0-alpha3)</small>
 
-        <section id="types" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#types">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Types          </h1>
-          <div class="types-list">
+</h1>
+
+
+  <section id="moduledoc">
+<p>Struct representing the flags a user account can have</p>
+  </section>
+
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+      Summary
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:bug_hunter_level_1/0" translate="no">bug_hunter_level_1()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Bug Hunter (Level 1)</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:bug_hunter_level_2/0" translate="no">bug_hunter_level_2()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Bug Hunter (Level 2)</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:early_supporter/0" translate="no">early_supporter()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Early Supporter</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:flags/0" translate="no">flags()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:hypesquad_balance/0" translate="no">hypesquad_balance()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>HypeSquad Balance</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:hypesquad_bravery/0" translate="no">hypesquad_bravery()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>HypeSquad Bravery</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:hypesquad_brilliance/0" translate="no">hypesquad_brilliance()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>HypeSquad Brilliance</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:hypesquad_events/0" translate="no">hypesquad_events()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>HypeSquad Events</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:partner/0" translate="no">partner()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Discord Partner</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:staff/0" translate="no">staff()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Discord Employee</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:system/0" translate="no">system()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>System user</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:team_user/0" translate="no">team_user()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Team User</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:verified_bot/0" translate="no">verified_bot()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Verified bot</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:verified_developer/0" translate="no">verified_developer()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Verified developer</p></div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#from_integer/1" translate="no">from_integer(flag_value)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Constructs a flag struct based on an integer from the Discord API (either public_flags or flags).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#to_integer/1" translate="no">to_integer(flag_struct)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Convert a flag struct to an integer value.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Types
+    </h1>
+    <div class="types-list">
 <section class="detail" id="t:bug_hunter_level_1/0">
+
   <div class="detail-header">
     <a href="#t:bug_hunter_level_1/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">bug_hunter_level_1()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L40" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">bug_hunter_level_1()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L40" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>bug_hunter_level_1() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> bug_hunter_level_1() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>Bug Hunter (Level 1)</p>  </section>
+<p>Bug Hunter (Level 1)</p>
+  </section>
 </section>
 <section class="detail" id="t:bug_hunter_level_2/0">
+
   <div class="detail-header">
     <a href="#t:bug_hunter_level_2/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">bug_hunter_level_2()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L75" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">bug_hunter_level_2()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L75" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>bug_hunter_level_2() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> bug_hunter_level_2() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>Bug Hunter (Level 2)</p>  </section>
+<p>Bug Hunter (Level 2)</p>
+  </section>
 </section>
 <section class="detail" id="t:early_supporter/0">
+
   <div class="detail-header">
     <a href="#t:early_supporter/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">early_supporter()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L60" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">early_supporter()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L60" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>early_supporter() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> early_supporter() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>Early Supporter</p>  </section>
+<p>Early Supporter</p>
+  </section>
 </section>
 <section class="detail" id="t:flags/0">
+
   <div class="detail-header">
     <a href="#t:flags/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">flags()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L87" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">flags()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L87" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>flags() :: %Nostrum.Struct.User.Flags{
+
+          <pre translate="no"><span class="attribute">@type</span> flags() :: %Nostrum.Struct.User.Flags{
   bug_hunter_level_1: <a href="#t:bug_hunter_level_1/0">bug_hunter_level_1</a>(),
   bug_hunter_level_2: <a href="#t:bug_hunter_level_2/0">bug_hunter_level_2</a>(),
   early_supporter: <a href="#t:early_supporter/0">early_supporter</a>(),
@@ -303,276 +433,366 @@ Types          </h1>
   verified_bot: <a href="#t:verified_bot/0">verified_bot</a>(),
   verified_developer: <a href="#t:verified_developer/0">verified_developer</a>()
 }</pre>
+
       </div>
+
 
   </section>
 </section>
 <section class="detail" id="t:hypesquad_balance/0">
+
   <div class="detail-header">
     <a href="#t:hypesquad_balance/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">hypesquad_balance()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L55" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">hypesquad_balance()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L55" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>hypesquad_balance() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> hypesquad_balance() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>HypeSquad Balance</p>  </section>
+<p>HypeSquad Balance</p>
+  </section>
 </section>
 <section class="detail" id="t:hypesquad_bravery/0">
+
   <div class="detail-header">
     <a href="#t:hypesquad_bravery/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">hypesquad_bravery()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L45" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">hypesquad_bravery()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L45" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>hypesquad_bravery() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> hypesquad_bravery() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>HypeSquad Bravery</p>  </section>
+<p>HypeSquad Bravery</p>
+  </section>
 </section>
 <section class="detail" id="t:hypesquad_brilliance/0">
+
   <div class="detail-header">
     <a href="#t:hypesquad_brilliance/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">hypesquad_brilliance()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L50" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">hypesquad_brilliance()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L50" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>hypesquad_brilliance() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> hypesquad_brilliance() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>HypeSquad Brilliance</p>  </section>
+<p>HypeSquad Brilliance</p>
+  </section>
 </section>
 <section class="detail" id="t:hypesquad_events/0">
+
   <div class="detail-header">
     <a href="#t:hypesquad_events/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">hypesquad_events()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L35" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">hypesquad_events()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L35" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>hypesquad_events() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> hypesquad_events() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>HypeSquad Events</p>  </section>
+<p>HypeSquad Events</p>
+  </section>
 </section>
 <section class="detail" id="t:partner/0">
+
   <div class="detail-header">
     <a href="#t:partner/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">partner()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L30" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">partner()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L30" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>partner() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> partner() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>Discord Partner</p>  </section>
+<p>Discord Partner</p>
+  </section>
 </section>
 <section class="detail" id="t:staff/0">
+
   <div class="detail-header">
     <a href="#t:staff/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">staff()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L25" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">staff()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L25" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>staff() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> staff() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>Discord Employee</p>  </section>
+<p>Discord Employee</p>
+  </section>
 </section>
 <section class="detail" id="t:system/0">
+
   <div class="detail-header">
     <a href="#t:system/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">system()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L70" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">system()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L70" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>system() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> system() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>System user</p>  </section>
+<p>System user</p>
+  </section>
 </section>
 <section class="detail" id="t:t/0">
+
   <div class="detail-header">
     <a href="#t:t/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">t()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L103" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L103" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>t() :: <a href="#t:flags/0">flags</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: <a href="#t:flags/0">flags</a>()</pre>
+
       </div>
+
 
   </section>
 </section>
 <section class="detail" id="t:team_user/0">
+
   <div class="detail-header">
     <a href="#t:team_user/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">team_user()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L65" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">team_user()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L65" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>team_user() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> team_user() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>Team User</p>  </section>
+<p>Team User</p>
+  </section>
 </section>
 <section class="detail" id="t:verified_bot/0">
+
   <div class="detail-header">
     <a href="#t:verified_bot/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">verified_bot()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L80" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">verified_bot()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L80" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>verified_bot() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> verified_bot() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>Verified bot</p>  </section>
+<p>Verified bot</p>
+  </section>
 </section>
 <section class="detail" id="t:verified_developer/0">
+
   <div class="detail-header">
     <a href="#t:verified_developer/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">verified_developer()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L85" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">verified_developer()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L85" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>verified_developer() :: bool()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> verified_developer() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>Verified developer</p>  </section>
+<p>Verified developer</p>
+  </section>
 </section>
-          </div>
-        </section>
-        <section id="functions" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#functions">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Functions          </h1>
-          <div class="functions-list">
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Functions
+    </h1>
+    <div class="functions-list">
 <section class="detail" id="from_integer/1">
+
   <div class="detail-header">
     <a href="#from_integer/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">from_integer(flag_value)</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L146" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">from_integer(flag_value)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L146" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>from_integer(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@spec</span> from_integer(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
       </div>
 
 <p>Constructs a flag struct based on an integer from the Discord API (either public_flags or flags).</p><h2 id="from_integer/1-examples" class="section-heading">
-  <a href="#from_integer/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#from_integer/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
   Examples
 </h2>
-<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Struct.User.Flags</span><span class="o">.</span><span class="n">from_integer</span><span class="p" data-group-id="7301151972-1">(</span><span class="mi">131842</span><span class="p" data-group-id="7301151972-1">)</span><span class="w">
-</span><span class="p" data-group-id="7301151972-2">%</span><span class="nc" data-group-id="7301151972-2">Nostrum.Struct.User.Flags</span><span class="p" data-group-id="7301151972-2">{</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Struct.User.Flags</span><span class="o">.</span><span class="n">from_integer</span><span class="p" data-group-id="9585404671-1">(</span><span class="mi">131842</span><span class="p" data-group-id="9585404671-1">)</span><span class="w">
+</span><span class="p" data-group-id="9585404671-2">%</span><span class="nc" data-group-id="9585404671-2">Nostrum.Struct.User.Flags</span><span class="p" data-group-id="9585404671-2">{</span><span class="w">
   </span><span class="ss">bug_hunter_level_1</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
   </span><span class="ss">bug_hunter_level_2</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
   </span><span class="ss">early_supporter</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
@@ -586,32 +806,41 @@ Functions          </h1>
   </span><span class="ss">team_user</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
   </span><span class="ss">verified_bot</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
   </span><span class="ss">verified_developer</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
-</span><span class="p" data-group-id="7301151972-2">}</span></code></pre>  </section>
+</span><span class="p" data-group-id="9585404671-2">}</span></code></pre>
+  </section>
 </section>
 <section class="detail" id="to_integer/1">
+
   <div class="detail-header">
     <a href="#to_integer/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">to_integer(flag_struct)</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L181" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">to_integer(flag_struct)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/user/flags.ex#L181" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>to_integer(<a href="#t:t/0">t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@spec</span> to_integer(<a href="#t:t/0">t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
       </div>
 
 <p>Convert a flag struct to an integer value.</p><h2 id="to_integer/1-examples" class="section-heading">
-  <a href="#to_integer/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#to_integer/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
   Examples
 </h2>
-<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">my_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="3034399458-1">%</span><span class="nc" data-group-id="3034399458-1">Nostrum.Struct.User.Flags</span><span class="p" data-group-id="3034399458-1">{</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">my_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7286993590-1">%</span><span class="nc" data-group-id="7286993590-1">Nostrum.Struct.User.Flags</span><span class="p" data-group-id="7286993590-1">{</span><span class="w">
 </span><span class="gp unselectable">...&gt; </span><span class="w"> </span><span class="ss">bug_hunter_level_1</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
 </span><span class="gp unselectable">...&gt; </span><span class="w"> </span><span class="ss">bug_hunter_level_2</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
 </span><span class="gp unselectable">...&gt; </span><span class="w"> </span><span class="ss">early_supporter</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
@@ -625,44 +854,52 @@ Functions          </h1>
 </span><span class="gp unselectable">...&gt; </span><span class="w"> </span><span class="ss">team_user</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
 </span><span class="gp unselectable">...&gt; </span><span class="w"> </span><span class="ss">verified_bot</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
 </span><span class="gp unselectable">...&gt; </span><span class="w"> </span><span class="ss">verified_developer</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="3034399458-1">}</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Struct.User.Flags</span><span class="o">.</span><span class="n">to_integer</span><span class="p" data-group-id="3034399458-2">(</span><span class="n">my_flags</span><span class="p" data-group-id="3034399458-2">)</span><span class="w">
-</span><span class="mi">131842</span></code></pre>  </section>
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="7286993590-1">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Struct.User.Flags</span><span class="o">.</span><span class="n">to_integer</span><span class="p" data-group-id="7286993590-2">(</span><span class="n">my_flags</span><span class="p" data-group-id="7286993590-2">)</span><span class="w">
+</span><span class="mi">131842</span></code></pre>
+  </section>
 </section>
-          </div>
-        </section>
+
+    </div>
+  </section>
+
       <footer class="footer">
         <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/nostrum/0.9.0-alpha3" class="footer-hex-package">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3/show/lib/nostrum/struct/user/flags.ex">current file</a>)
+
+            </span>
+
           <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.25.1) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="Nostrum.epub" title="ePub version">
+                Download ePub version
+              </a>
+
           </span>
         </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.4) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>

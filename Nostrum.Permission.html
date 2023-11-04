@@ -4,38 +4,55 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.25.1">
-    <meta name="project" content="Nostrum v0.4.7">
-    <title>Nostrum.Permission — Nostrum v0.4.7</title>
-    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
-    <script src="dist/sidebar_items-7e1ee19a00.js"></script>
+    <meta name="generator" content="ExDoc v0.29.4">
+    <meta name="project" content="Nostrum v0.9.0-alpha3">
+
+    <title>Nostrum.Permission — Nostrum v0.9.0-alpha3</title>
+    <link rel="stylesheet" href="dist/html-elixir-HHVY3JYD.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-XWGFFSCD.js"></script>
+    <script src="dist/sidebar_items-033B6DAD.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+    <script async src="dist/html-JDI3AVDD.js"></script>
+
+
   </head>
-  <body data-type="modules">
+  <body data-type="modules" class="page-module">
     <script>
+
       try {
-        if (localStorage.getItem('night-mode') === 'true') {
-          document.body.classList.add('night-mode');
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
         }
       } catch (error) { }
     </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
     </label>
   </form>
 
@@ -45,213 +62,301 @@
   </div>
 
   <div class="sidebar-header">
+
     <div class="sidebar-projectDetails">
-      <a href="https://github.com/kraigie/nostrum" class="sidebar-projectName">
-Nostrum      </a>
-      <strong class="sidebar-projectVersion">
-        v0.4.7
-      </strong>
+      <a href="https://github.com/Kraigie/nostrum" class="sidebar-projectName" translate="no">
+Nostrum
+      </a>
+      <div class="sidebar-projectVersion" translate="no">
+        v0.9.0-alpha3
+      </div>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+        <li><a id="tasks-list-link" href="#full-list"><span translate="no">Mix</span> Tasks</a></li>
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
-
-      <li><a id="modules-list-link" href="#full-list">Modules</a></li>
-
-      <li><a id="tasks-list-link" href="#full-list">Mix Tasks</a></li>
-  </ul>
   <div class="gradient"></div>
-  <ul id="full-list" class="sidebar-fullList"></ul>
+  <ul id="full-list"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-      <h1>
-        Nostrum.Permission <small class="app-vsn">(Nostrum v0.4.7)</small>
-          <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L1" title="View Source" class="view-source" rel="help">
-            <span class="icon-code" aria-hidden="true"></span>
-            <span class="sr-only">View Source</span>
-          </a>
-      </h1>
+<h1>
+<button class="icon-action display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
 
 
-        <section id="moduledoc">
+    <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span translate="no">Nostrum.Permission</span> 
+  <small class="app-vsn" translate="no">(Nostrum v0.9.0-alpha3)</small>
+
+</h1>
+
+
+  <section id="moduledoc">
 <p>Functions that work on permissions.</p><p>Some functions return a list of permissions. You can use enumerable functions
-to work with permissions:</p><pre><code class="Elixir">alias Nostrum.Cache.GuildCache
-alias Nostrum.Struct.Guild.Member
+to work with permissions:</p><pre><code class="makeup elixir" translate="no"><span class="kn">alias</span><span class="w"> </span><span class="nc">Nostrum.Cache.GuildCache</span><span class="w">
+</span><span class="kn">alias</span><span class="w"> </span><span class="nc">Nostrum.Struct.Guild.Member</span><span class="w">
 
-guild = GuildCache.get!(279093381723062272)
-member = Map.get(guild.members, 177888205536886784)
-member_perms = Member.guild_permissions(member, guild)
+</span><span class="n">guild</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">GuildCache</span><span class="o">.</span><span class="n">get!</span><span class="p" data-group-id="0085119636-1">(</span><span class="mi">279093381723062272</span><span class="p" data-group-id="0085119636-1">)</span><span class="w">
+</span><span class="n">member</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Map</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="0085119636-2">(</span><span class="n">guild</span><span class="o">.</span><span class="n">members</span><span class="p">,</span><span class="w"> </span><span class="mi">177888205536886784</span><span class="p" data-group-id="0085119636-2">)</span><span class="w">
+</span><span class="n">member_perms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Member</span><span class="o">.</span><span class="n">guild_permissions</span><span class="p" data-group-id="0085119636-3">(</span><span class="n">member</span><span class="p">,</span><span class="w"> </span><span class="n">guild</span><span class="p" data-group-id="0085119636-3">)</span><span class="w">
 
-if :administrator in member_perms do
-  IO.puts(&quot;This user has the administrator permission.&quot;)
-end</code></pre>        </section>
+</span><span class="k">if</span><span class="w"> </span><span class="ss">:administrator</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">member_perms</span><span class="w"> </span><span class="k" data-group-id="0085119636-4">do</span><span class="w">
+  </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="0085119636-5">(</span><span class="s">&quot;This user has the administrator permission.&quot;</span><span class="p" data-group-id="0085119636-5">)</span><span class="w">
+</span><span class="k" data-group-id="0085119636-4">end</span></code></pre>
+  </section>
 
-        <section id="summary" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#summary">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-            Summary
-          </h1>
-  <div class="summary-types summary">
-    <h2>
-      <a href="#types">Types</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:bit/0">bit()</a>
-  </div>
-    <div class="summary-synopsis"><p>Represents a single permission as a bitvalue.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:bitset/0">bitset()</a>
-  </div>
-    <div class="summary-synopsis"><p>Represents a set of permissions as a bitvalue.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:general_permission/0">general_permission()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:t/0">t()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:text_permission/0">text_permission()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:voice_permission/0">voice_permission()</a>
-  </div>
-</div>
-  </div>
-  <div class="summary-functions summary">
-    <h2>
-      <a href="#functions">Functions</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#all/0">all()</a>
-  </div>
-    <div class="summary-synopsis"><p>Returns a list of all permissions.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#from_bit/1">from_bit(bit)</a>
-  </div>
-    <div class="summary-synopsis"><p>Converts the given bit to a permission.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#from_bit!/1">from_bit!(bit)</a>
-  </div>
-    <div class="summary-synopsis"><p>Same as <a href="#from_bit/1"><code class="inline">from_bit/1</code></a>, but raises <a href="https://hexdocs.pm/elixir/ArgumentError.html"><code class="inline">ArgumentError</code></a> in case of failure.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#from_bitset/1">from_bitset(bitset)</a>
-  </div>
-    <div class="summary-synopsis"><p>Converts the given bitset to a list of permissions.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#is_permission/1">is_permission(term)</a>
-  </div>
-    <div class="summary-synopsis"><p>Returns <code class="inline">true</code> if <code class="inline">term</code> is a permission; otherwise returns <code class="inline">false</code>.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#to_bit/1">to_bit(permission)</a>
-  </div>
-    <div class="summary-synopsis"><p>Converts the given permission to a bit.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#to_bitset/1">to_bitset(permissions)</a>
-  </div>
-    <div class="summary-synopsis"><p>Converts the given enumerable of permissions to a bitset.</p></div>
-</div>
-  </div>
-        </section>
 
-        <section id="types" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#types">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Types          </h1>
-          <div class="types-list">
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+      Summary
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:bit/0" translate="no">bit()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Represents a single permission as a bitvalue.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:bitset/0" translate="no">bitset()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Represents a set of permissions as a bitvalue.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:general_permission/0" translate="no">general_permission()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:text_permission/0" translate="no">text_permission()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:voice_permission/0" translate="no">voice_permission()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#all/0" translate="no">all()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns a list of all permissions.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#from_bit/1" translate="no">from_bit(bit)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Converts the given bit to a permission.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#from_bit!/1" translate="no">from_bit!(bit)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Same as <a href="#from_bit/1"><code class="inline">from_bit/1</code></a>, but raises <a href="https://hexdocs.pm/elixir/ArgumentError.html"><code class="inline">ArgumentError</code></a> in case of failure.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#from_bitset/1" translate="no">from_bitset(bitset)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Converts the given bitset to a list of permissions.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#is_permission/1" translate="no">is_permission(term)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns <code class="inline">true</code> if <code class="inline">term</code> is a permission; otherwise returns <code class="inline">false</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#to_bit/1" translate="no">to_bit(permission)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Converts the given permission to a bit.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#to_bitset/1" translate="no">to_bitset(permissions)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Converts the given enumerable of permissions to a bitset.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Types
+    </h1>
+    <div class="types-list">
 <section class="detail" id="t:bit/0">
+
   <div class="detail-header">
     <a href="#t:bit/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">bit()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L27" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">bit()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L27" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>bit() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> bit() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+
       </div>
 
-<p>Represents a single permission as a bitvalue.</p>  </section>
+<p>Represents a single permission as a bitvalue.</p>
+  </section>
 </section>
 <section class="detail" id="t:bitset/0">
+
   <div class="detail-header">
     <a href="#t:bitset/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">bitset()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L32" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">bitset()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L32" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>bitset() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> bitset() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+
       </div>
 
-<p>Represents a set of permissions as a bitvalue.</p>  </section>
+<p>Represents a set of permissions as a bitvalue.</p>
+  </section>
 </section>
 <section class="detail" id="t:general_permission/0">
+
   <div class="detail-header">
     <a href="#t:general_permission/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">general_permission()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L34" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">general_permission()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L34" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>general_permission() ::
+
+          <pre translate="no"><span class="attribute">@type</span> general_permission() ::
   :create_instant_invite
   | :kick_members
   | :ban_members
@@ -264,49 +369,66 @@ Types          </h1>
   | :manage_nicknames
   | :manage_roles
   | :manage_webhooks
-  | :manage_emojis</pre>
+  | :manage_emojis_and_stickers
+  | :view_guild_insights
+  | :use_application_commands
+  | :moderate_members</pre>
+
       </div>
+
 
   </section>
 </section>
 <section class="detail" id="t:t/0">
+
   <div class="detail-header">
     <a href="#t:t/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">t()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L69" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L81" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>t() :: <a href="#t:general_permission/0">general_permission</a>() | <a href="#t:text_permission/0">text_permission</a>() | <a href="#t:voice_permission/0">voice_permission</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: <a href="#t:general_permission/0">general_permission</a>() | <a href="#t:text_permission/0">text_permission</a>() | <a href="#t:voice_permission/0">voice_permission</a>()</pre>
+
       </div>
+
 
   </section>
 </section>
 <section class="detail" id="t:text_permission/0">
+
   <div class="detail-header">
     <a href="#t:text_permission/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">text_permission()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L49" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">text_permission()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L52" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>text_permission() ::
+
+          <pre translate="no"><span class="attribute">@type</span> text_permission() ::
   :add_reactions
   | :send_messages
   | :send_tts_messages
@@ -315,269 +437,357 @@ Types          </h1>
   | :attach_files
   | :read_message_history
   | :mention_everyone
-  | :use_external_emojis</pre>
+  | :use_external_emojis
+  | :create_public_threads
+  | :create_private_threads
+  | :send_messages_in_threads
+  | :manage_threads
+  | :use_external_stickers</pre>
+
       </div>
+
 
   </section>
 </section>
 <section class="detail" id="t:voice_permission/0">
+
   <div class="detail-header">
     <a href="#t:voice_permission/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">voice_permission()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L60" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">voice_permission()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L68" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>voice_permission() ::
+
+          <pre translate="no"><span class="attribute">@type</span> voice_permission() ::
   :connect
   | :speak
   | :mute_members
   | :deafen_members
   | :move_members
   | :use_vad
-  | :priority_speaker</pre>
+  | :priority_speaker
+  | :stream
+  | :request_to_speak
+  | :manage_events
+  | :use_embedded_activities</pre>
+
       </div>
+
 
   </section>
 </section>
-          </div>
-        </section>
-        <section id="functions" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#functions">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Functions          </h1>
-          <div class="functions-list">
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Functions
+    </h1>
+    <div class="functions-list">
 <section class="detail" id="all/0">
+
   <div class="detail-header">
     <a href="#all/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">all()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L128" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">all()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L152" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>all() :: [<a href="#t:t/0">t</a>()]</pre>
+
+          <pre translate="no"><span class="attribute">@spec</span> all() :: [<a href="#t:t/0">t</a>()]</pre>
+
       </div>
 
-<p>Returns a list of all permissions.</p>  </section>
+<p>Returns a list of all permissions.</p>
+  </section>
 </section>
 <section class="detail" id="from_bit/1">
+
   <div class="detail-header">
     <a href="#from_bit/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">from_bit(bit)</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L146" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">from_bit(bit)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L170" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>from_bit(<a href="#t:bit/0">bit</a>()) :: {:ok, <a href="#t:t/0">t</a>()} | :error</pre>
+
+          <pre translate="no"><span class="attribute">@spec</span> from_bit(<a href="#t:bit/0">bit</a>()) :: {:ok, <a href="#t:t/0">t</a>()} | :error</pre>
+
       </div>
 
 <p>Converts the given bit to a permission.</p><p>This function returns <code class="inline">:error</code> if <code class="inline">bit</code> does not map to a permission.</p><h2 id="from_bit/1-examples" class="section-heading">
-  <a href="#from_bit/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#from_bit/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
   Examples
 </h2>
-<pre><code class="Elixir">iex&gt; Nostrum.Permission.from_bit(0x04000000)
-{:ok, :change_nickname}
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Permission</span><span class="o">.</span><span class="n">from_bit</span><span class="p" data-group-id="7936522904-1">(</span><span class="mh">0x04000000</span><span class="p" data-group-id="7936522904-1">)</span><span class="w">
+</span><span class="p" data-group-id="7936522904-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="ss">:change_nickname</span><span class="p" data-group-id="7936522904-2">}</span><span class="w">
 
-iex&gt; Nostrum.Permission.from_bit(0)
-:error</code></pre>  </section>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Permission</span><span class="o">.</span><span class="n">from_bit</span><span class="p" data-group-id="7936522904-3">(</span><span class="mi">0</span><span class="p" data-group-id="7936522904-3">)</span><span class="w">
+</span><span class="ss">:error</span></code></pre>
+  </section>
 </section>
 <section class="detail" id="from_bit!/1">
+
   <div class="detail-header">
     <a href="#from_bit!/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">from_bit!(bit)</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L164" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">from_bit!(bit)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L188" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>from_bit!(<a href="#t:bit/0">bit</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@spec</span> from_bit!(<a href="#t:bit/0">bit</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
       </div>
 
 <p>Same as <a href="#from_bit/1"><code class="inline">from_bit/1</code></a>, but raises <a href="https://hexdocs.pm/elixir/ArgumentError.html"><code class="inline">ArgumentError</code></a> in case of failure.</p><h2 id="from_bit!/1-examples" class="section-heading">
-  <a href="#from_bit!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#from_bit!/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
   Examples
 </h2>
-<pre><code class="Elixir">iex&gt; Nostrum.Permission.from_bit!(0x04000000)
-:change_nickname
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Permission</span><span class="o">.</span><span class="n">from_bit!</span><span class="p" data-group-id="5349115156-1">(</span><span class="mh">0x04000000</span><span class="p" data-group-id="5349115156-1">)</span><span class="w">
+</span><span class="ss">:change_nickname</span><span class="w">
 
-iex&gt; Nostrum.Permission.from_bit!(0)
-** (ArgumentError) expected a valid bit, got: `0`</code></pre>  </section>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Permission</span><span class="o">.</span><span class="n">from_bit!</span><span class="p" data-group-id="5349115156-2">(</span><span class="mi">0</span><span class="p" data-group-id="5349115156-2">)</span><span class="w">
+</span><span class="gt">** (ArgumentError) expected a valid bit, got: `0`</span></code></pre>
+  </section>
 </section>
 <section class="detail" id="from_bitset/1">
+
   <div class="detail-header">
     <a href="#from_bitset/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">from_bitset(bitset)</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L187" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">from_bitset(bitset)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L211" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>from_bitset(<a href="#t:bitset/0">bitset</a>()) :: [<a href="#t:t/0">t</a>()]</pre>
+
+          <pre translate="no"><span class="attribute">@spec</span> from_bitset(<a href="#t:bitset/0">bitset</a>()) :: [<a href="#t:t/0">t</a>()]</pre>
+
       </div>
 
 <p>Converts the given bitset to a list of permissions.</p><p>If invalid bits are given they will be omitted from the results.</p><h2 id="from_bitset/1-examples" class="section-heading">
-  <a href="#from_bitset/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#from_bitset/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
   Examples
 </h2>
-<pre><code class="Elixir">iex&gt; Nostrum.Permission.from_bitset(0x08000002)
-[:manage_nicknames, :kick_members]
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Permission</span><span class="o">.</span><span class="n">from_bitset</span><span class="p" data-group-id="9272025807-1">(</span><span class="mh">0x08000002</span><span class="p" data-group-id="9272025807-1">)</span><span class="w">
+</span><span class="p" data-group-id="9272025807-2">[</span><span class="ss">:manage_nicknames</span><span class="p">,</span><span class="w"> </span><span class="ss">:kick_members</span><span class="p" data-group-id="9272025807-2">]</span><span class="w">
 
-iex&gt; Nostrum.Permission.from_bitset(0x4000000000000)
-[]</code></pre>  </section>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Permission</span><span class="o">.</span><span class="n">from_bitset</span><span class="p" data-group-id="9272025807-3">(</span><span class="mh">0x4000000000000</span><span class="p" data-group-id="9272025807-3">)</span><span class="w">
+</span><span class="p" data-group-id="9272025807-4">[</span><span class="p" data-group-id="9272025807-4">]</span></code></pre>
+  </section>
 </section>
 <section class="detail" id="is_permission/1">
+
   <div class="detail-header">
     <a href="#is_permission/1" class="detail-link" title="Link to this macro">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this macro</span>
     </a>
-    <h1 class="signature">is_permission(term)</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L122" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">is_permission(term)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L146" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
       <span class="note">(macro)</span>
+
   </div>
 
   <section class="docstring">
 
 <p>Returns <code class="inline">true</code> if <code class="inline">term</code> is a permission; otherwise returns <code class="inline">false</code>.</p><h2 id="is_permission/1-examples" class="section-heading">
-  <a href="#is_permission/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#is_permission/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
   Examples
 </h2>
-<pre><code class="Elixir">iex&gt; Nostrum.Permission.is_permission(:administrator)
-true
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Permission</span><span class="o">.</span><span class="n">is_permission</span><span class="p" data-group-id="5273916703-1">(</span><span class="ss">:administrator</span><span class="p" data-group-id="5273916703-1">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
 
-iex&gt; Nostrum.Permission.is_permission(:not_a_permission)
-false</code></pre>  </section>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Permission</span><span class="o">.</span><span class="n">is_permission</span><span class="p" data-group-id="5273916703-2">(</span><span class="ss">:not_a_permission</span><span class="p" data-group-id="5273916703-2">)</span><span class="w">
+</span><span class="no">false</span></code></pre>
+  </section>
 </section>
 <section class="detail" id="to_bit/1">
+
   <div class="detail-header">
     <a href="#to_bit/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">to_bit(permission)</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L210" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">to_bit(permission)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L234" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>to_bit(<a href="#t:t/0">t</a>()) :: <a href="#t:bit/0">bit</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@spec</span> to_bit(<a href="#t:t/0">t</a>()) :: <a href="#t:bit/0">bit</a>()</pre>
+
       </div>
 
 <p>Converts the given permission to a bit.</p><h2 id="to_bit/1-examples" class="section-heading">
-  <a href="#to_bit/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#to_bit/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
   Examples
 </h2>
-<pre><code class="Elixir">iex&gt; Nostrum.Permission.to_bit(:administrator)
-8</code></pre>  </section>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Permission</span><span class="o">.</span><span class="n">to_bit</span><span class="p" data-group-id="0726611707-1">(</span><span class="ss">:administrator</span><span class="p" data-group-id="0726611707-1">)</span><span class="w">
+</span><span class="mi">8</span></code></pre>
+  </section>
 </section>
 <section class="detail" id="to_bitset/1">
+
   <div class="detail-header">
     <a href="#to_bitset/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">to_bitset(permissions)</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L223" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">to_bitset(permissions)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/permission.ex#L247" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>to_bitset(<a href="https://hexdocs.pm/elixir/Enum.html#t:t/0">Enum.t</a>()) :: <a href="#t:bitset/0">bitset</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@spec</span> to_bitset(<a href="https://hexdocs.pm/elixir/Enum.html#t:t/0">Enum.t</a>()) :: <a href="#t:bitset/0">bitset</a>()</pre>
+
       </div>
 
 <p>Converts the given enumerable of permissions to a bitset.</p><h2 id="to_bitset/1-examples" class="section-heading">
-  <a href="#to_bitset/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#to_bitset/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
   Examples
 </h2>
-<pre><code class="Elixir">iex&gt; Nostrum.Permission.to_bitset([:administrator, :create_instant_invite])
-9</code></pre>  </section>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Nostrum.Permission</span><span class="o">.</span><span class="n">to_bitset</span><span class="p" data-group-id="0823219299-1">(</span><span class="p" data-group-id="0823219299-2">[</span><span class="ss">:administrator</span><span class="p">,</span><span class="w"> </span><span class="ss">:create_instant_invite</span><span class="p" data-group-id="0823219299-2">]</span><span class="p" data-group-id="0823219299-1">)</span><span class="w">
+</span><span class="mi">9</span></code></pre>
+  </section>
 </section>
-          </div>
-        </section>
+
+    </div>
+  </section>
+
       <footer class="footer">
         <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/nostrum/0.9.0-alpha3" class="footer-hex-package">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3/show/lib/nostrum/permission.ex">current file</a>)
+
+            </span>
+
           <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.25.1) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="Nostrum.epub" title="ePub version">
+                Download ePub version
+              </a>
+
           </span>
         </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.4) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>

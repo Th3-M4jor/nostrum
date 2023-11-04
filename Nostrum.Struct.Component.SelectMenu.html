@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.4">
+    <meta name="project" content="Nostrum v0.9.0-alpha3">
+
+    <title>Nostrum.Struct.Component.SelectMenu — Nostrum v0.9.0-alpha3</title>
+    <link rel="stylesheet" href="dist/html-elixir-HHVY3JYD.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-XWGFFSCD.js"></script>
+    <script src="dist/sidebar_items-033B6DAD.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/html-JDI3AVDD.js"></script>
+
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+    <div class="sidebar-projectDetails">
+      <a href="https://github.com/Kraigie/nostrum" class="sidebar-projectName" translate="no">
+Nostrum
+      </a>
+      <div class="sidebar-projectVersion" translate="no">
+        v0.9.0-alpha3
+      </div>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+        <li><a id="tasks-list-link" href="#full-list"><span translate="no">Mix</span> Tasks</a></li>
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="icon-action display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/component/select_menu.ex#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span translate="no">Nostrum.Struct.Component.SelectMenu</span> 
+  <small class="app-vsn" translate="no">(Nostrum v0.9.0-alpha3)</small>
+
+</h1>
+
+
+  <section id="moduledoc">
+<p>Select Menu</p>
+  </section>
+
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+      Summary
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:opt/0" translate="no">opt()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:opts/0" translate="no">opts()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#flatten/1" translate="no">flatten(map)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#select_menu/2" translate="no">select_menu(custom_id, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a select menu that can be used inside an action row.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Types
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:opt/0">
+
+  <div class="detail-header">
+    <a href="#t:opt/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">opt()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/component/select_menu.ex#L28" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> opt() ::
+  {:custom_id, <a href="Nostrum.Struct.Component.html#t:custom_id/0">Nostrum.Struct.Component.custom_id</a>()}
+  | {:options, <a href="Nostrum.Struct.Component.html#t:options/0">Nostrum.Struct.Component.options</a>()}
+  | {:placeholder, <a href="Nostrum.Struct.Component.html#t:placeholder/0">Nostrum.Struct.Component.placeholder</a>()}
+  | {:min_values, <a href="Nostrum.Struct.Component.html#t:min_values/0">Nostrum.Struct.Component.min_values</a>()}
+  | {:max_values, <a href="Nostrum.Struct.Component.html#t:max_values/0">Nostrum.Struct.Component.max_values</a>()}
+  | {:disabled, <a href="Nostrum.Struct.Component.html#t:disabled/0">Nostrum.Struct.Component.disabled</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:opts/0">
+
+  <div class="detail-header">
+    <a href="#t:opts/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">opts()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/component/select_menu.ex#L36" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> opts() :: [<a href="#t:opt/0">opt</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/component/select_menu.ex#L18" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: %Nostrum.Struct.Component{
+  components: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  custom_id: <a href="Nostrum.Struct.Component.html#t:custom_id/0">Nostrum.Struct.Component.custom_id</a>(),
+  disabled: <a href="Nostrum.Struct.Component.html#t:disabled/0">Nostrum.Struct.Component.disabled</a>(),
+  emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  label: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  max_length: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  max_values: <a href="Nostrum.Struct.Component.html#t:max_values/0">Nostrum.Struct.Component.max_values</a>(),
+  min_length: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  min_values: <a href="Nostrum.Struct.Component.html#t:min_values/0">Nostrum.Struct.Component.min_values</a>(),
+  options: <a href="Nostrum.Struct.Component.html#t:options/0">Nostrum.Struct.Component.options</a>(),
+  placeholder: <a href="Nostrum.Struct.Component.html#t:placeholder/0">Nostrum.Struct.Component.placeholder</a>(),
+  required: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  style: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  type: <a href="Nostrum.Struct.Component.html#t:type/0">Nostrum.Struct.Component.type</a>(),
+  url: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  value: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Functions
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="flatten/1">
+
+  <div class="detail-header">
+    <a href="#flatten/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">flatten(map)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/component/select_menu.ex#L1" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="select_menu/2">
+
+    <span id="select_menu/1"></span>
+
+  <div class="detail-header">
+    <a href="#select_menu/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">select_menu(custom_id, opts \\ [])</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/component/select_menu.ex#L56" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Creates a select menu that can be used inside an action row.</p><p>Options can be passed as a keyword list.</p><h2 id="select_menu/2-parameters" class="section-heading">
+  <a href="#select_menu/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">parameters</p>
+  </a>
+  Parameters
+</h2>
+<ul><li><code class="inline">custom_id</code> - lower case string, used for matching against when your application receives an interaction.</li></ul><h2 id="select_menu/2-options" class="section-heading">
+  <a href="#select_menu/2-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">options</p>
+  </a>
+  Options
+</h2>
+<ul><li><code class="inline">disabled</code> - If the select should be disabled</li><li><code class="inline">options</code> - A list of options for the select menu, see <a href="Nostrum.Struct.Component.Option.html"><code class="inline">Nostrum.Struct.Component.Option</code></a></li><li><code class="inline">placeholder</code> - Value to be shown before anything is selected</li><li><code class="inline">min_values</code> - minimum number of values the user must select, between 0 and 25, default is 1</li><li><code class="inline">max_values</code> - maximum number of values the user must select, between 0 and 25, default is 1</li></ul>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+      <footer class="footer">
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/nostrum/0.9.0-alpha3" class="footer-hex-package">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3/show/lib/nostrum/struct/component/select_menu.ex">current file</a>)
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="Nostrum.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.4) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

@@ -4,38 +4,55 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.25.1">
-    <meta name="project" content="Nostrum v0.4.7">
-    <title>Nostrum.Struct.Message.Attachment — Nostrum v0.4.7</title>
-    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
-    <script src="dist/sidebar_items-7e1ee19a00.js"></script>
+    <meta name="generator" content="ExDoc v0.29.4">
+    <meta name="project" content="Nostrum v0.9.0-alpha3">
+
+    <title>Nostrum.Struct.Message.Attachment — Nostrum v0.9.0-alpha3</title>
+    <link rel="stylesheet" href="dist/html-elixir-HHVY3JYD.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-XWGFFSCD.js"></script>
+    <script src="dist/sidebar_items-033B6DAD.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+    <script async src="dist/html-JDI3AVDD.js"></script>
+
+
   </head>
-  <body data-type="modules">
+  <body data-type="modules" class="page-module">
     <script>
+
       try {
-        if (localStorage.getItem('night-mode') === 'true') {
-          document.body.classList.add('night-mode');
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
         }
       } catch (error) { }
     </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
     </label>
   </form>
 
@@ -45,234 +62,325 @@
   </div>
 
   <div class="sidebar-header">
+
     <div class="sidebar-projectDetails">
-      <a href="https://github.com/kraigie/nostrum" class="sidebar-projectName">
-Nostrum      </a>
-      <strong class="sidebar-projectVersion">
-        v0.4.7
-      </strong>
+      <a href="https://github.com/Kraigie/nostrum" class="sidebar-projectName" translate="no">
+Nostrum
+      </a>
+      <div class="sidebar-projectVersion" translate="no">
+        v0.9.0-alpha3
+      </div>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+        <li><a id="tasks-list-link" href="#full-list"><span translate="no">Mix</span> Tasks</a></li>
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
-
-      <li><a id="modules-list-link" href="#full-list">Modules</a></li>
-
-      <li><a id="tasks-list-link" href="#full-list">Mix Tasks</a></li>
-  </ul>
   <div class="gradient"></div>
-  <ul id="full-list" class="sidebar-fullList"></ul>
+  <ul id="full-list"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-      <h1>
-        Nostrum.Struct.Message.Attachment <small class="app-vsn">(Nostrum v0.4.7)</small>
-          <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L1" title="View Source" class="view-source" rel="help">
-            <span class="icon-code" aria-hidden="true"></span>
-            <span class="sr-only">View Source</span>
-          </a>
-      </h1>
+<h1>
+<button class="icon-action display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
 
 
-        <section id="moduledoc">
-<p>Struct representing a Discord message attachment.</p>        </section>
+    <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
 
-        <section id="summary" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#summary">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-            Summary
-          </h1>
-  <div class="summary-types summary">
-    <h2>
-      <a href="#types">Types</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:filename/0">filename()</a>
-  </div>
-    <div class="summary-synopsis"><p>Name of attached file</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:height/0">height()</a>
-  </div>
-    <div class="summary-synopsis"><p>Height of the file (if image)</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:id/0">id()</a>
-  </div>
-    <div class="summary-synopsis"><p>Attachment id</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:proxy_url/0">proxy_url()</a>
-  </div>
-    <div class="summary-synopsis"><p>Proxy url of the file</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:size/0">size()</a>
-  </div>
-    <div class="summary-synopsis"><p>Size of the file in bytes</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:t/0">t()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:url/0">url()</a>
-  </div>
-    <div class="summary-synopsis"><p>Source url of the file</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:width/0">width()</a>
-  </div>
-    <div class="summary-synopsis"><p>Width of the file (if image)</p></div>
-</div>
-  </div>
-        </section>
+  <span translate="no">Nostrum.Struct.Message.Attachment</span> 
+  <small class="app-vsn" translate="no">(Nostrum v0.9.0-alpha3)</small>
 
-        <section id="types" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#types">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Types          </h1>
-          <div class="types-list">
+</h1>
+
+
+  <section id="moduledoc">
+<p>Struct representing a Discord message attachment.</p>
+  </section>
+
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+      Summary
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:filename/0" translate="no">filename()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Name of attached file</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:height/0" translate="no">height()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Height of the file (if image)</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:id/0" translate="no">id()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Attachment id</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:proxy_url/0" translate="no">proxy_url()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Proxy url of the file</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:size/0" translate="no">size()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Size of the file in bytes</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:url/0" translate="no">url()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Source url of the file</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:width/0" translate="no">width()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Width of the file (if image)</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Types
+    </h1>
+    <div class="types-list">
 <section class="detail" id="t:filename/0">
+
   <div class="detail-header">
     <a href="#t:filename/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">filename()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L22" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">filename()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L22" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>filename() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> filename() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
       </div>
 
-<p>Name of attached file</p>  </section>
+<p>Name of attached file</p>
+  </section>
 </section>
 <section class="detail" id="t:height/0">
+
   <div class="detail-header">
     <a href="#t:height/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">height()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L34" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">height()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L34" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>height() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | nil</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> height() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | nil</pre>
+
       </div>
 
-<p>Height of the file (if image)</p>  </section>
+<p>Height of the file (if image)</p>
+  </section>
 </section>
 <section class="detail" id="t:id/0">
+
   <div class="detail-header">
     <a href="#t:id/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">id()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L19" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">id()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L19" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>id() :: <a href="Nostrum.Snowflake.html#t:t/0">Nostrum.Snowflake.t</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> id() :: <a href="Nostrum.Snowflake.html#t:t/0">Nostrum.Snowflake.t</a>()</pre>
+
       </div>
 
-<p>Attachment id</p>  </section>
+<p>Attachment id</p>
+  </section>
 </section>
 <section class="detail" id="t:proxy_url/0">
+
   <div class="detail-header">
     <a href="#t:proxy_url/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">proxy_url()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L31" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">proxy_url()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L31" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>proxy_url() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> proxy_url() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
       </div>
 
-<p>Proxy url of the file</p>  </section>
+<p>Proxy url of the file</p>
+  </section>
 </section>
 <section class="detail" id="t:size/0">
+
   <div class="detail-header">
     <a href="#t:size/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">size()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L25" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">size()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L25" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>size() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> size() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
       </div>
 
-<p>Size of the file in bytes</p>  </section>
+<p>Size of the file in bytes</p>
+  </section>
 </section>
 <section class="detail" id="t:t/0">
+
   <div class="detail-header">
     <a href="#t:t/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">t()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L39" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L39" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>t() :: %Nostrum.Struct.Message.Attachment{
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: %Nostrum.Struct.Message.Attachment{
   filename: <a href="#t:filename/0">filename</a>(),
   height: <a href="#t:height/0">height</a>(),
   id: <a href="#t:id/0">id</a>(),
@@ -281,86 +389,109 @@ Types          </h1>
   url: <a href="#t:url/0">url</a>(),
   width: <a href="#t:width/0">width</a>()
 }</pre>
+
       </div>
+
 
   </section>
 </section>
 <section class="detail" id="t:url/0">
+
   <div class="detail-header">
     <a href="#t:url/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">url()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L28" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">url()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L28" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>url() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> url() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
       </div>
 
-<p>Source url of the file</p>  </section>
+<p>Source url of the file</p>
+  </section>
 </section>
 <section class="detail" id="t:width/0">
+
   <div class="detail-header">
     <a href="#t:width/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">width()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L37" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">width()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/message/attachment.ex#L37" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>width() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | nil</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> width() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | nil</pre>
+
       </div>
 
-<p>Width of the file (if image)</p>  </section>
+<p>Width of the file (if image)</p>
+  </section>
 </section>
-          </div>
-        </section>
+
+    </div>
+  </section>
+
       <footer class="footer">
         <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/nostrum/0.9.0-alpha3" class="footer-hex-package">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3/show/lib/nostrum/struct/message/attachment.ex">current file</a>)
+
+            </span>
+
           <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.25.1) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="Nostrum.epub" title="ePub version">
+                Download ePub version
+              </a>
+
           </span>
         </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.4) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>

@@ -4,38 +4,55 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.25.1">
-    <meta name="project" content="Nostrum v0.4.7">
-    <title>Nostrum.Struct.Channel — Nostrum v0.4.7</title>
-    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
-    <script src="dist/sidebar_items-7e1ee19a00.js"></script>
+    <meta name="generator" content="ExDoc v0.29.4">
+    <meta name="project" content="Nostrum v0.9.0-alpha3">
+
+    <title>Nostrum.Struct.Channel — Nostrum v0.9.0-alpha3</title>
+    <link rel="stylesheet" href="dist/html-elixir-HHVY3JYD.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-XWGFFSCD.js"></script>
+    <script src="dist/sidebar_items-033B6DAD.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+    <script async src="dist/html-JDI3AVDD.js"></script>
+
+
   </head>
-  <body data-type="modules">
+  <body data-type="modules" class="page-module">
     <script>
+
       try {
-        if (localStorage.getItem('night-mode') === 'true') {
-          document.body.classList.add('night-mode');
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
         }
       } catch (error) { }
     </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
     </label>
   </form>
 
@@ -45,930 +62,2881 @@
   </div>
 
   <div class="sidebar-header">
+
     <div class="sidebar-projectDetails">
-      <a href="https://github.com/kraigie/nostrum" class="sidebar-projectName">
-Nostrum      </a>
-      <strong class="sidebar-projectVersion">
-        v0.4.7
-      </strong>
+      <a href="https://github.com/Kraigie/nostrum" class="sidebar-projectName" translate="no">
+Nostrum
+      </a>
+      <div class="sidebar-projectVersion" translate="no">
+        v0.9.0-alpha3
+      </div>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+        <li><a id="tasks-list-link" href="#full-list"><span translate="no">Mix</span> Tasks</a></li>
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
-
-      <li><a id="modules-list-link" href="#full-list">Modules</a></li>
-
-      <li><a id="tasks-list-link" href="#full-list">Mix Tasks</a></li>
-  </ul>
   <div class="gradient"></div>
-  <ul id="full-list" class="sidebar-fullList"></ul>
+  <ul id="full-list"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-      <h1>
-        Nostrum.Struct.Channel <small class="app-vsn">(Nostrum v0.4.7)</small>
-          <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L1" title="View Source" class="view-source" rel="help">
-            <span class="icon-code" aria-hidden="true"></span>
-            <span class="sr-only">View Source</span>
-          </a>
-      </h1>
+<h1>
+<button class="icon-action display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
 
 
-        <section id="moduledoc">
-<p>Struct representing a Discord guild channel.</p><p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> represents all 5 types of channels. Each
-channel has a field <code class="inline">:type</code> with any of the following values:</p><ul><li><code class="inline">0</code> - GUILD_TEXT</li><li><code class="inline">1</code> - DM</li><li><code class="inline">2</code> - GUILD_VOICE</li><li><code class="inline">3</code> - GROUP_DM</li><li><code class="inline">4</code> - GUILD_CATEGORY</li></ul><p>More information can be found on the
-<a href="https://discord.com/developers/docs/resources/channel#channel-object">Discord API Channel Documentation</a>.</p><h2 id="module-mentioning-channels-in-messages" class="section-heading">
-  <a href="#module-mentioning-channels-in-messages" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Mentioning Channels in Messages
+    <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span translate="no">Nostrum.Struct.Channel</span> 
+  <small class="app-vsn" translate="no">(Nostrum v0.9.0-alpha3)</small>
+
+</h1>
+
+
+  <section id="moduledoc">
+<p>Struct and helper functions for working with channels.</p><h2 id="module-channel-struct" class="section-heading">
+  <a href="#module-channel-struct" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">channel-struct</p>
+  </a>
+  Channel Struct
 </h2>
-<p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> can be mentioned in message content using the <a href="https://hexdocs.pm/elixir/String.Chars.html"><code class="inline">String.Chars</code></a>
-protocol or <a href="#mention/1"><code class="inline">mention/1</code></a>.</p><pre><code class="Elixir">channel = %Nostrum.Struct.Channel{id: 381889573426429952}
-Nostrum.Api.create_message!(184046599834435585, &quot;#{channel}&quot;)
-%Nostrum.Struct.Message{content: &quot;&lt;#381889573426429952&gt;&quot;}
+<p>The channel struct is used by Nostrum to represent a <em>Discord Channel Object</em>. More information can be found on the <a href="https://discord.com/developers/docs/resources/channel#channels-resource">Discord API Channel Documentation</a>.</p><p>The struct can have one of several forms depending on the type of channel. You can read more about the individual channel types <a href="#module-channel-types">below</a>.</p><p>A typical channel would appear as:</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="6341753008-1">%</span><span class="nc" data-group-id="6341753008-1">Nostrum.Struct.Channel</span><span class="p" data-group-id="6341753008-1">{</span><span class="w">
+  </span><span class="ss">guild_id</span><span class="p">:</span><span class="w"> </span><span class="mi">766435015768539156</span><span class="p">,</span><span class="w">
+  </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">827333533688397865</span><span class="p">,</span><span class="w">
+  </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;announcements&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">nsfw</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
+  </span><span class="ss">permission_overwrites</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6341753008-2">[</span><span class="p" data-group-id="6341753008-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">position</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="6341753008-1">}</span></code></pre><p>The channel struct implements <a href="https://hexdocs.pm/elixir/String.Chars.html"><code class="inline">String.Chars</code></a> protocol through the <a href="#mention/1"><code class="inline">mention/1</code></a> function. This example uses our channel from the previous code block.</p><pre><code class="makeup elixir" translate="no"><span class="n">channel</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">to_string</span><span class="p" data-group-id="8233297887-1">(</span><span class="p" data-group-id="8233297887-1">)</span><span class="w">
+</span><span class="s">&quot;&lt;#766435015768539156&gt;&quot;</span></code></pre><h2 id="module-channel-cache" class="section-heading">
+  <a href="#module-channel-cache" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">channel-cache</p>
+  </a>
+  Channel Cache
+</h2>
+<p>The <a href="Nostrum.Cache.ChannelCache.html"><code class="inline">ChannelCache</code></a> module provides functionality for you to retrieve information about any channel that your application can see. It provides two functions: <a href="Nostrum.Cache.ChannelCache.html#get/1"><code class="inline">get/1</code></a> and <a href="Nostrum.Cache.ChannelCache.html#get!/1"><code class="inline">get!/1</code></a>.</p><h2 id="module-example" class="section-heading">
+  <a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">example</p>
+  </a>
+  Example
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="nc">Nostrum.Cache.ChannelCache</span><span class="o">.</span><span class="n">get!</span><span class="p" data-group-id="2402155179-1">(</span><span class="mi">827333533688397865</span><span class="p" data-group-id="2402155179-1">)</span><span class="w">
+</span><span class="p" data-group-id="2402155179-2">%</span><span class="nc" data-group-id="2402155179-2">Nostrum.Struct.Channel</span><span class="p" data-group-id="2402155179-2">{</span><span class="w">
+  </span><span class="ss">application_id</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+  </span><span class="ss">bitrate</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+  </span><span class="ss">guild_id</span><span class="p">:</span><span class="w"> </span><span class="mi">766435015768539156</span><span class="p">,</span><span class="w">
+  </span><span class="ss">icon</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+  </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">827333533688397865</span><span class="p">,</span><span class="w">
+  </span><span class="ss">last_message_id</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+  </span><span class="ss">last_pin_timestamp</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+  </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;announcements&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">nsfw</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
+  </span><span class="ss">owner_id</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+  </span><span class="ss">parent_id</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+  </span><span class="ss">permission_overwrites</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2402155179-3">[</span><span class="w">
+    </span><span class="p" data-group-id="2402155179-4">%</span><span class="nc" data-group-id="2402155179-4">Nostrum.Struct.Overwrite</span><span class="p" data-group-id="2402155179-4">{</span><span class="w">
+      </span><span class="ss">allow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="ss">deny</span><span class="p">:</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span><span class="w">
+      </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">766435015768539156</span><span class="p">,</span><span class="w">
+      </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:role</span><span class="w">
+    </span><span class="p" data-group-id="2402155179-4">}</span><span class="w">
+  </span><span class="p" data-group-id="2402155179-3">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">position</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="ss">recipients</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+  </span><span class="ss">topic</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+  </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="ss">user_limit</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="w">
+</span><span class="p" data-group-id="2402155179-2">}</span></code></pre><p>More details of the cache can be found at <a href="Nostrum.Cache.ChannelCache.html"><code class="inline">Nostrum.Cache.ChannelCache</code></a>.</p><h2 id="module-helper-functions" class="section-heading">
+  <a href="#module-helper-functions" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">helper-functions</p>
+  </a>
+  Helper Functions
+</h2>
+<p>This module contains two functions for assisting with channel structs. <a href="#mention/1"><code class="inline">mention/1</code></a> to convert the channel into a mention as a string, and <code class="inline">link/1</code> to convert the channel into a hyperlink as a string. Further details and examples are detailed in the <a href="#functions">Functions section of this module.</a></p><h2 id="module-api-functions" class="section-heading">
+  <a href="#module-api-functions" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">api-functions</p>
+  </a>
+  Api Functions
+</h2>
+<p>The Nostrum Api contains numerous functions related to channels. Notable functions relating to channels are shown below.</p><ul><li><a href="Nostrum.Api.html#create_guild_channel/2"><code class="inline">Nostrum.Api.create_guild_channel/2</code></a></li><li><a href="Nostrum.Api.html#get_channel/1"><code class="inline">Nostrum.Api.get_channel/1</code></a></li><li><a href="Nostrum.Api.html#modify_channel/3"><code class="inline">Nostrum.Api.modify_channel/3</code></a></li><li><a href="Nostrum.Api.html#delete_channel/2"><code class="inline">Nostrum.Api.delete_channel/2</code></a></li><li><a href="Nostrum.Api.html#add_pinned_channel_message/2"><code class="inline">Nostrum.Api.add_pinned_channel_message/2</code></a></li><li><a href="Nostrum.Api.html#create_channel_invite/3"><code class="inline">Nostrum.Api.create_channel_invite/3</code></a></li><li><a href="Nostrum.Api.html#get_guild_channels/1"><code class="inline">Nostrum.Api.get_guild_channels/1</code></a></li><li><a href="Nostrum.Api.html#modify_guild_channel_positions/2"><code class="inline">Nostrum.Api.modify_guild_channel_positions/2</code></a></li></ul><blockquote><p>Note: This is not an exhaustive list, for full details please see the <a href="Nostrum.Api.html"><code class="inline">Nostrum.Api</code></a> module documentation.</p></blockquote><h2 id="module-channel-types" class="section-heading">
+  <a href="#module-channel-types" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">channel-types</p>
+  </a>
+  Channel Types
+</h2>
+<p>Channels take the shape of various types depending on their use and not all fields are always used. The currently implemented channel types are detailed below. The type of channel is determined by the <code class="inline">:type</code> field.</p><p>This diagram represents the regular channel types <code class="inline">0</code>, <code class="inline">2</code>, <code class="inline">5</code> and <code class="inline">13</code>.</p><p>  <img src="./assets/channel_types.png" alt="Discord Channels"/></p><p>  The currently implemented channel types are:</p><table><thead><tr><th style="text-align: left;"></th><th style="text-align: left;">Channel Type</th><th style="text-align: left;"></th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">0</code></td><td style="text-align: left;"><a href="#t:guild_text_channel/0"><code class="inline">GUILD_TEXT</code></a></td><td style="text-align: left;"><em>A text channel within a server</em></td></tr><tr><td style="text-align: left;"><code class="inline">1</code></td><td style="text-align: left;"><a href="#t:dm_channel/0"><code class="inline">DM</code></a></td><td style="text-align: left;"><em>A direct message between users</em></td></tr><tr><td style="text-align: left;"><code class="inline">2</code></td><td style="text-align: left;"><a href="#t:guild_voice_channel/0"><code class="inline">GUILD_VOICE</code></a></td><td style="text-align: left;"><em>A voice channel within a server</em></td></tr><tr><td style="text-align: left;"><code class="inline">3</code></td><td style="text-align: left;"><a href="#t:group_dm_channel/0"><code class="inline">GROUP_DM</code></a></td><td style="text-align: left;"><em>A direct message between multiple users</em></td></tr><tr><td style="text-align: left;"><code class="inline">4</code></td><td style="text-align: left;"><a href="#t:guild_category_channel/0"><code class="inline">GUILD_CATEGORY</code></a></td><td style="text-align: left;"><em>A category that contains up to 50 channels</em></td></tr><tr><td style="text-align: left;"><code class="inline">5</code></td><td style="text-align: left;"><a href="#t:guild_news_channel/0"><code class="inline">GUILD_NEWS</code></a></td><td style="text-align: left;"><em>A channel that users can follow and crosspost</em></td></tr><tr><td style="text-align: left;"><code class="inline">6</code></td><td style="text-align: left;"><a href="#t:guild_store_channel/0"><code class="inline">GUILD_STORE</code></a></td><td style="text-align: left;"><em>A channel to sell games on Discord</em></td></tr><tr><td style="text-align: left;"><code class="inline">10</code></td><td style="text-align: left;"><a href="#t:guild_news_thread_channel/0"><code class="inline">GUILD_NEWS_THREAD</code></a></td><td style="text-align: left;"><em>A temporary sub-channel within a news channel</em></td></tr><tr><td style="text-align: left;"><code class="inline">11</code></td><td style="text-align: left;"><a href="#t:guild_public_thread_channel/0"><code class="inline">GUILD_PUBLIC_THREAD</code></a></td><td style="text-align: left;"><em>A temporary sub-channel within a text channel</em></td></tr><tr><td style="text-align: left;"><code class="inline">12</code></td><td style="text-align: left;"><a href="#t:guild_private_thread_channel/0"><code class="inline">GUILD_PRIVATE_THREAD</code></a></td><td style="text-align: left;"><em>A temporary private sub-channel within a text channel</em></td></tr><tr><td style="text-align: left;"><code class="inline">13</code></td><td style="text-align: left;"><a href="#t:guild_stage_voice_channel/0"><code class="inline">GUILD_STAGE_VOICE</code></a></td><td style="text-align: left;"><em>A voice channel for hosting events with an audience</em></td></tr><tr><td style="text-align: left;"><code class="inline">15</code></td><td style="text-align: left;"><a href="#t:guild_forum_channel/0"><code class="inline">GUILD_FORUM</code></a></td><td style="text-align: left;">_A channel that can only contain threads</td></tr></tbody></table><p>You can use one of the <a href="Nostrum.Constants.ChannelType.html"><code class="inline">Nostrum.Constants.ChannelType</code></a> methods.</p><p>More information about <em>Discord Channel Types</em> can be found on the <a href="https://discord.com/developers/docs/resources/channel#channel-object-channel-types">Discord API Channel Type Documentation</a>.</p>
+  </section>
 
-channel = %Nostrum.Struct.Channel{id: 280085880452939778}
-Nostrum.Api.create_message!(280085880452939778, &quot;#{Nostrum.Struct.Channel.mention(channel)}&quot;)
-%Nostrum.Struct.Message{content: &quot;&lt;#280085880452939778&gt;&quot;}</code></pre>        </section>
 
-        <section id="summary" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#summary">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-            Summary
-          </h1>
-  <div class="summary-types summary">
-    <h2>
-      <a href="#types">Types</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:application_id/0">application_id()</a>
-  </div>
-    <div class="summary-synopsis"><p>The application id of the group DM creator if it is bot-created</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:bitrate/0">bitrate()</a>
-  </div>
-    <div class="summary-synopsis"><p>The bitrate of the voice channel</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:channel_category/0">channel_category()</a>
-  </div>
-    <div class="summary-synopsis"><p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a channel category in a guild.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:dm_channel/0">dm_channel()</a>
-  </div>
-    <div class="summary-synopsis"><p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a DM channel.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:group_dm_channel/0">group_dm_channel()</a>
-  </div>
-    <div class="summary-synopsis"><p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a group DM channel.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:guild_channel/0">guild_channel()</a>
-  </div>
-    <div class="summary-synopsis"><p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a channel in a guild.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:guild_id/0">guild_id()</a>
-  </div>
-    <div class="summary-synopsis"><p>The id of the channel's guild</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:guild_text_channel/0">guild_text_channel()</a>
-  </div>
-    <div class="summary-synopsis"><p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a text channel in a guild.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:guild_voice_channel/0">guild_voice_channel()</a>
-  </div>
-    <div class="summary-synopsis"><p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a voice channel in a guild.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:icon/0">icon()</a>
-  </div>
-    <div class="summary-synopsis"><p>The icon hash of the channel</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:id/0">id()</a>
-  </div>
-    <div class="summary-synopsis"><p>The channel's id</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:last_message_id/0">last_message_id()</a>
-  </div>
-    <div class="summary-synopsis"><p>Id of the last message sent</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:last_pin_timestamp/0">last_pin_timestamp()</a>
-  </div>
-    <div class="summary-synopsis"><p>When the last pinned message was pinned</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:name/0">name()</a>
-  </div>
-    <div class="summary-synopsis"><p>The name of the channel</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:nsfw/0">nsfw()</a>
-  </div>
-    <div class="summary-synopsis"><p>If the channel is nsfw</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:owner_id/0">owner_id()</a>
-  </div>
-    <div class="summary-synopsis"><p>The id of the DM creator</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:parent_id/0">parent_id()</a>
-  </div>
-    <div class="summary-synopsis"><p>The id of the parent category for a channel</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:permission_overwrites/0">permission_overwrites()</a>
-  </div>
-    <div class="summary-synopsis"><p>The list of overwrites</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:position/0">position()</a>
-  </div>
-    <div class="summary-synopsis"><p>The ordered position of the channel</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:recipients/0">recipients()</a>
-  </div>
-    <div class="summary-synopsis"><p>The recipients of the DM</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:t/0">t()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:text_channel/0">text_channel()</a>
-  </div>
-    <div class="summary-synopsis"><p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a text channel.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:topic/0">topic()</a>
-  </div>
-    <div class="summary-synopsis"><p>Current channel topic</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:user_limit/0">user_limit()</a>
-  </div>
-    <div class="summary-synopsis"><p>The user limit of the voice channel</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:voice_channel/0">voice_channel()</a>
-  </div>
-    <div class="summary-synopsis"><p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a voice channel.</p></div>
-</div>
-  </div>
-  <div class="summary-functions summary">
-    <h2>
-      <a href="#functions">Functions</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#mention/1">mention(channel)</a>
-  </div>
-    <div class="summary-synopsis"><p>Formats a <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> into a mention.</p></div>
-</div>
-  </div>
-        </section>
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+      Summary
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
 
-        <section id="types" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#types">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Types          </h1>
-          <div class="types-list">
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:application_id/0" translate="no">application_id()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The id of the application that created a group direct message or thread.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:applied_tags/0" translate="no">applied_tags()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:archive_timestamp/0" translate="no">archive_timestamp()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>When the thread was archived.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:archived/0" translate="no">archived()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The threads archived status.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:auto_archive_duration/0" translate="no">auto_archive_duration()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Archive duration for the thread in minutes.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:bitrate/0" translate="no">bitrate()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The bitate of the voice channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:channel_mention/0" translate="no">channel_mention()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A partial channel object representing a channel mention.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:default_auto_archive_duration/0" translate="no">default_auto_archive_duration()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Default duration for newly created threads in minutes.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:default_reaction_emoji/0" translate="no">default_reaction_emoji()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>An object that specifies the emoji to use as the default way to react to a forum post.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:default_thread_rate_limit_per_user/0" translate="no">default_thread_rate_limit_per_user()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The <code class="inline">:rate_limit_per_user</code> which will be applied to threads created in the channel, in seconds.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:dm_channel/0" translate="no">dm_channel()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Type 1 partial channel object representing a direct message.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:flags/0" translate="no">flags()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>User thread settings, currently only used for notifications.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:forum_tag/0" translate="no">forum_tag()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A map representing a tag for use in forum channels.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:group_dm_channel/0" translate="no">group_dm_channel()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Type 3 partial channel object representing a group direct message.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:guild_category_channel/0" translate="no">guild_category_channel()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Type 4 partial channel object representing a channel category.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:guild_channel/0" translate="no">guild_channel()</a>
+
+          <span class="deprecated" title="See t.0">deprecated</span>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Guild channel types</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:guild_forum_channel/0" translate="no">guild_forum_channel()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Type 15 a guild forum channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:guild_id/0" translate="no">guild_id()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The id of the guild the channel is located in.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:guild_news_channel/0" translate="no">guild_news_channel()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Type 5 partial channel object representing a news channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:guild_news_thread_channel/0" translate="no">guild_news_thread_channel()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Type 10 partial channel object representing a news thread.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:guild_private_thread_channel/0" translate="no">guild_private_thread_channel()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Type 12 partial channel object representing a private thread.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:guild_public_thread_channel/0" translate="no">guild_public_thread_channel()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Type 11 partial channel object representing a standard thread.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:guild_stage_voice_channel/0" translate="no">guild_stage_voice_channel()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Type 13 channel object representing a stage channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:guild_store_channel/0" translate="no">guild_store_channel()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Type 6 partial channel object representing a store channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:guild_text_channel/0" translate="no">guild_text_channel()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Type 0 partial channel object representing a text channel within a guild.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:guild_voice_channel/0" translate="no">guild_voice_channel()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Type 2 partial channel object representing an audio channel within a guild.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:icon/0" translate="no">icon()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The hash of the channels icon.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:id/0" translate="no">id()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The id of the channel object.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:join_timestamp/0" translate="no">join_timestamp()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>When the user joined the thread.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:last_message_id/0" translate="no">last_message_id()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The id of the last message sent in the channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:last_pin_timestamp/0" translate="no">last_pin_timestamp()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Timestamp for the last pinned message.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:locked/0" translate="no">locked()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The threads locked status.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:member/0" translate="no">member()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Present when the bot joins a thread.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:member_count/0" translate="no">member_count()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Approximate count of members in a thread, capped at 50.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:message_count/0" translate="no">message_count()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Approximate count of messages in a thread, capped at 50.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:name/0" translate="no">name()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The name of the channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:newly_created/0" translate="no">newly_created()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Included only in the <code class="inline">THREAD_CREATE</code> event.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:nsfw/0" translate="no">nsfw()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Whether the NSFW setting is enabled for this channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:owner_id/0" translate="no">owner_id()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The id of the user of a group direct message or thread.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:parent_id/0" translate="no">parent_id()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The id of the parent channel that this channel is located under.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:permission_overwrites/0" translate="no">permission_overwrites()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A list of permission overwrites applied to the channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:permissions/0" translate="no">permissions()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Computed permissions of the invoking user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:position/0" translate="no">position()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The position of the channel in the sidebar of the guild.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:rate_limit_per_user/0" translate="no">rate_limit_per_user()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The users rate limit.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:recipients/0" translate="no">recipients()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A list of users in a group DM.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:rtc_region/0" translate="no">rtc_region()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Region id for the channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" translate="no">t()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>All valid channel types.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:text_channel/0" translate="no">text_channel()</a>
+
+          <span class="deprecated" title="See t.0">deprecated</span>
+
+      </div>
+
+        <div class="summary-synopsis"><p>All valid text channels.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:thread_metadata/0" translate="no">thread_metadata()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Thread-specific fields not needed by other channels.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:topic/0" translate="no">topic()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The topic of the channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:type/0" translate="no">type()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The type of channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:user_id/0" translate="no">user_id()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>User id of the threads creator.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:user_limit/0" translate="no">user_limit()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The user limit of a voice channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:video_quality_mode/0" translate="no">video_quality_mode()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The video quality mode of the channel.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:voice_channel/0" translate="no">voice_channel()</a>
+
+          <span class="deprecated" title="See t:guild_voice_channel/0">deprecated</span>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a voice channel</p></div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#mention/1" translate="no">mention(channel)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Convert a channel into a mention.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Types
+    </h1>
+    <div class="types-list">
 <section class="detail" id="t:application_id/0">
+
   <div class="detail-header">
     <a href="#t:application_id/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">application_id()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L100" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">application_id()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L255" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>application_id() :: <a href="Nostrum.Snowflake.html#t:t/0">Nostrum.Snowflake.t</a>() | nil</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> application_id() :: <a href="Nostrum.Snowflake.html#t:t/0">Nostrum.Snowflake.t</a>() | nil</pre>
+
       </div>
 
-<p>The application id of the group DM creator if it is bot-created</p>  </section>
+<p>The id of the application that created a group direct message or thread.</p><p>This applies to bot created channels.</p>
+  </section>
+</section>
+<section class="detail" id="t:applied_tags/0">
+
+  <div class="detail-header">
+    <a href="#t:applied_tags/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">applied_tags()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L411" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.7.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> applied_tags() :: [<a href="Nostrum.Snowflake.html#t:t/0">Nostrum.Snowflake.t</a>()] | nil</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:archive_timestamp/0">
+
+  <div class="detail-header">
+    <a href="#t:archive_timestamp/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">archive_timestamp()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L314" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> archive_timestamp() :: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>() | nil</pre>
+
+      </div>
+
+<p>When the thread was archived.</p>
+  </section>
+</section>
+<section class="detail" id="t:archived/0">
+
+  <div class="detail-header">
+    <a href="#t:archived/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">archived()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L326" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> archived() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>The threads archived status.</p>
+  </section>
+</section>
+<section class="detail" id="t:auto_archive_duration/0">
+
+  <div class="detail-header">
+    <a href="#t:auto_archive_duration/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">auto_archive_duration()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L337" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> auto_archive_duration() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+      </div>
+
+<p>Archive duration for the thread in minutes.</p><ul><li>60, 1 hour</li><li>1440, 24 hours</li><li>4320, 3 days</li><li>10080, 7 days</li></ul>
+  </section>
 </section>
 <section class="detail" id="t:bitrate/0">
+
   <div class="detail-header">
     <a href="#t:bitrate/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">bitrate()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L85" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">bitrate()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L212" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>bitrate() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> bitrate() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
       </div>
 
-<p>The bitrate of the voice channel</p>  </section>
+<p>The bitate of the voice channel.</p>
+  </section>
 </section>
-<section class="detail" id="t:channel_category/0">
+<section class="detail" id="t:channel_mention/0">
+
   <div class="detail-header">
-    <a href="#t:channel_category/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+    <a href="#t:channel_mention/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">channel_category()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L203" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">channel_mention()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L638" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>channel_category() :: %Nostrum.Struct.Channel{
-  application_id: nil,
-  bitrate: nil,
+
+          <pre translate="no"><span class="attribute">@type</span> channel_mention() :: %Nostrum.Struct.Channel{
+  application_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  applied_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  available_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  bitrate: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_auto_archive_duration: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_reaction_emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_thread_rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   guild_id: <a href="#t:guild_id/0">guild_id</a>(),
-  icon: nil,
+  icon: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   id: <a href="#t:id/0">id</a>(),
-  last_message_id: nil,
-  last_pin_timestamp: nil,
+  last_message_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  last_pin_timestamp: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  message_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   name: <a href="#t:name/0">name</a>(),
-  nsfw: <a href="#t:nsfw/0">nsfw</a>(),
-  owner_id: nil,
-  parent_id: <a href="#t:parent_id/0">parent_id</a>(),
-  permission_overwrites: <a href="#t:permission_overwrites/0">permission_overwrites</a>(),
-  position: <a href="#t:position/0">position</a>(),
-  recipients: nil,
-  topic: nil,
-  type: 4,
-  user_limit: nil
+  newly_created: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  nsfw: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  owner_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  parent_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  permission_overwrites: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  position: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  recipients: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rtc_region: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  thread_metadata: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  topic: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  type: <a href="#t:type/0">type</a>(),
+  user_limit: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
 }</pre>
+
       </div>
 
-<p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a channel category in a guild.</p>  </section>
+<p>A partial channel object representing a channel mention.</p><p>More information about the <em>Discord Channel Mention Object</em> can be found at the <a href="https://discord.com/developers/docs/resources/channel#channel-mention-object">Discord API Channel Mention Object
+Documentation</a>.</p>
+  </section>
+</section>
+<section class="detail" id="t:default_auto_archive_duration/0">
+
+  <div class="detail-header">
+    <a href="#t:default_auto_archive_duration/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">default_auto_archive_duration()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L379" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> default_auto_archive_duration() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+      </div>
+
+<p>Default duration for newly created threads in minutes.</p><ul><li>60, 1 hour</li><li>1440, 24 hours</li><li>4320, 3 days</li><li>10080, 7 days</li></ul>
+  </section>
+</section>
+<section class="detail" id="t:default_reaction_emoji/0">
+
+  <div class="detail-header">
+    <a href="#t:default_reaction_emoji/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">default_reaction_emoji()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L419" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.7.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> default_reaction_emoji() ::
+  %{emoji_id: <a href="Nostrum.Snowflake.html#t:t/0">Nostrum.Snowflake.t</a>() | nil, emoji_name: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil} | nil</pre>
+
+      </div>
+
+<p>An object that specifies the emoji to use as the default way to react to a forum post.</p><p><code class="inline">:emoji_id</code> and <code class="inline">:emoji_name</code> are mutually exclusive</p>
+  </section>
+</section>
+<section class="detail" id="t:default_thread_rate_limit_per_user/0">
+
+  <div class="detail-header">
+    <a href="#t:default_thread_rate_limit_per_user/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">default_thread_rate_limit_per_user()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L226" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.7.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> default_thread_rate_limit_per_user() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | nil</pre>
+
+      </div>
+
+<p>The <code class="inline">:rate_limit_per_user</code> which will be applied to threads created in the channel, in seconds.</p>
+  </section>
 </section>
 <section class="detail" id="t:dm_channel/0">
+
   <div class="detail-header">
     <a href="#t:dm_channel/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">dm_channel()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L134" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">dm_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L447" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>dm_channel() :: %Nostrum.Struct.Channel{
-  application_id: nil,
-  bitrate: nil,
-  guild_id: nil,
-  icon: nil,
-  id: <a href="#t:id/0">id</a>(),
-  last_message_id: <a href="#t:last_message_id/0">last_message_id</a>(),
-  last_pin_timestamp: nil,
-  name: nil,
-  nsfw: nil,
-  owner_id: nil,
-  parent_id: nil,
-  permission_overwrites: nil,
-  position: nil,
-  recipients: <a href="#t:recipients/0">recipients</a>(),
-  topic: nil,
-  type: 1,
-  user_limit: nil
-}</pre>
-      </div>
 
-<p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a DM channel.</p>  </section>
-</section>
-<section class="detail" id="t:group_dm_channel/0">
-  <div class="detail-header">
-    <a href="#t:group_dm_channel/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <h1 class="signature">group_dm_channel()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L180" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-  </div>
-
-  <section class="docstring">
-      <h2>Specs</h2>
-      <div class="specs">
-          <pre>group_dm_channel() :: %Nostrum.Struct.Channel{
-  application_id: <a href="#t:application_id/0">application_id</a>(),
-  bitrate: nil,
-  guild_id: nil,
-  icon: <a href="#t:icon/0">icon</a>(),
-  id: <a href="#t:id/0">id</a>(),
-  last_message_id: <a href="#t:last_message_id/0">last_message_id</a>(),
-  last_pin_timestamp: nil,
-  name: <a href="#t:name/0">name</a>(),
-  nsfw: nil,
-  owner_id: <a href="#t:owner_id/0">owner_id</a>(),
-  parent_id: nil,
-  permission_overwrites: nil,
-  position: nil,
-  recipients: <a href="#t:recipients/0">recipients</a>(),
-  topic: nil,
-  type: 3,
-  user_limit: nil
-}</pre>
-      </div>
-
-<p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a group DM channel.</p>  </section>
-</section>
-<section class="detail" id="t:guild_channel/0">
-  <div class="detail-header">
-    <a href="#t:guild_channel/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <h1 class="signature">guild_channel()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L226" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-  </div>
-
-  <section class="docstring">
-      <h2>Specs</h2>
-      <div class="specs">
-          <pre>guild_channel() ::
-  <a href="#t:guild_text_channel/0">guild_text_channel</a>() | <a href="#t:guild_voice_channel/0">guild_voice_channel</a>() | <a href="#t:channel_category/0">channel_category</a>()</pre>
-      </div>
-
-<p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a channel in a guild.</p>  </section>
-</section>
-<section class="detail" id="t:guild_id/0">
-  <div class="detail-header">
-    <a href="#t:guild_id/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <h1 class="signature">guild_id()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L64" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-  </div>
-
-  <section class="docstring">
-      <h2>Specs</h2>
-      <div class="specs">
-          <pre>guild_id() :: <a href="Nostrum.Struct.Guild.html#t:id/0">Nostrum.Struct.Guild.id</a>()</pre>
-      </div>
-
-<p>The id of the channel's guild</p>  </section>
-</section>
-<section class="detail" id="t:guild_text_channel/0">
-  <div class="detail-header">
-    <a href="#t:guild_text_channel/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <h1 class="signature">guild_text_channel()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L111" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-  </div>
-
-  <section class="docstring">
-      <h2>Specs</h2>
-      <div class="specs">
-          <pre>guild_text_channel() :: %Nostrum.Struct.Channel{
-  application_id: nil,
-  bitrate: nil,
-  guild_id: <a href="#t:guild_id/0">guild_id</a>(),
-  icon: nil,
+          <pre translate="no"><span class="attribute">@type</span> dm_channel() :: %Nostrum.Struct.Channel{
+  application_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  applied_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  available_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  bitrate: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_auto_archive_duration: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_reaction_emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_thread_rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  guild_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  icon: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   id: <a href="#t:id/0">id</a>(),
   last_message_id: <a href="#t:last_message_id/0">last_message_id</a>(),
   last_pin_timestamp: <a href="#t:last_pin_timestamp/0">last_pin_timestamp</a>(),
-  name: <a href="#t:name/0">name</a>(),
-  nsfw: <a href="#t:nsfw/0">nsfw</a>(),
-  owner_id: nil,
-  parent_id: <a href="#t:parent_id/0">parent_id</a>(),
-  permission_overwrites: <a href="#t:permission_overwrites/0">permission_overwrites</a>(),
-  position: <a href="#t:position/0">position</a>(),
-  recipients: nil,
-  topic: <a href="#t:topic/0">topic</a>(),
-  type: 0,
-  user_limit: nil
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  message_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  name: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  newly_created: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  nsfw: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  owner_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  parent_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  permission_overwrites: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  position: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  recipients: <a href="#t:recipients/0">recipients</a>(),
+  rtc_region: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  thread_metadata: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  topic: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  type: 1,
+  user_limit: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
 }</pre>
+
       </div>
 
-<p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a text channel in a guild.</p>  </section>
+<p>Type 1 partial channel object representing a direct message.</p>
+  </section>
+</section>
+<section class="detail" id="t:flags/0">
+
+  <div class="detail-header">
+    <a href="#t:flags/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">flags()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L368" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> flags() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+      </div>
+
+<p>User thread settings, currently only used for notifications.</p>
+  </section>
+</section>
+<section class="detail" id="t:forum_tag/0">
+
+  <div class="detail-header">
+    <a href="#t:forum_tag/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">forum_tag()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L402" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.7.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> forum_tag() :: %{
+  id: <a href="Nostrum.Snowflake.html#t:t/0">Nostrum.Snowflake.t</a>(),
+  name: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  moderated: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  emoji_id: <a href="Nostrum.Snowflake.html#t:t/0">Nostrum.Snowflake.t</a>() | nil,
+  emoji_name: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil
+}</pre>
+
+      </div>
+
+<p>A map representing a tag for use in forum channels.</p><p><code class="inline">:moderated</code> indicates whether the tag can only be added or removed by moderators.
+<code class="inline">:emoji_id</code> and <code class="inline">:emoji_name</code> are mutually exclusive and indicate the emoji used to represent the tag.</p>
+  </section>
+</section>
+<section class="detail" id="t:group_dm_channel/0">
+
+  <div class="detail-header">
+    <a href="#t:group_dm_channel/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">group_dm_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L475" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> group_dm_channel() :: %Nostrum.Struct.Channel{
+  application_id: <a href="#t:application_id/0">application_id</a>(),
+  applied_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  available_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  bitrate: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_auto_archive_duration: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_reaction_emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_thread_rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  guild_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  icon: <a href="#t:icon/0">icon</a>(),
+  id: <a href="#t:id/0">id</a>(),
+  last_message_id: <a href="#t:last_message_id/0">last_message_id</a>(),
+  last_pin_timestamp: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  message_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  name: <a href="#t:name/0">name</a>(),
+  newly_created: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  nsfw: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  owner_id: <a href="#t:owner_id/0">owner_id</a>(),
+  parent_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  permission_overwrites: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  position: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  recipients: <a href="#t:recipients/0">recipients</a>(),
+  rtc_region: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  thread_metadata: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  topic: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  type: 3,
+  user_limit: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+<p>Type 3 partial channel object representing a group direct message.</p>
+  </section>
+</section>
+<section class="detail" id="t:guild_category_channel/0">
+
+  <div class="detail-header">
+    <a href="#t:guild_category_channel/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">guild_category_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L492" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> guild_category_channel() :: %Nostrum.Struct.Channel{
+  application_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  applied_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  available_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  bitrate: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_auto_archive_duration: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_reaction_emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_thread_rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  guild_id: <a href="#t:guild_id/0">guild_id</a>(),
+  icon: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  id: <a href="#t:id/0">id</a>(),
+  last_message_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  last_pin_timestamp: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  message_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  name: <a href="#t:name/0">name</a>(),
+  newly_created: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  nsfw: <a href="#t:nsfw/0">nsfw</a>(),
+  owner_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  parent_id: <a href="#t:parent_id/0">parent_id</a>(),
+  permission_overwrites: <a href="#t:permission_overwrites/0">permission_overwrites</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  position: <a href="#t:position/0">position</a>(),
+  rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  recipients: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rtc_region: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  thread_metadata: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  topic: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  type: 4,
+  user_limit: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+<p>Type 4 partial channel object representing a channel category.</p><blockquote><p>Note:  Other channels <code class="inline">parent_id</code> field refers to this type of object.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="t:guild_channel/0">
+
+  <div class="detail-header">
+    <a href="#t:guild_channel/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">guild_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L648" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This type is deprecated. See t.0.
+    </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> guild_channel() ::
+  <a href="#t:guild_text_channel/0">guild_text_channel</a>() | <a href="#t:guild_voice_channel/0">guild_voice_channel</a>() | <a href="#t:guild_category_channel/0">guild_category_channel</a>()</pre>
+
+      </div>
+
+<p>Guild channel types</p>
+  </section>
+</section>
+<section class="detail" id="t:guild_forum_channel/0">
+
+  <div class="detail-header">
+    <a href="#t:guild_forum_channel/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">guild_forum_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L616" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.7.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> guild_forum_channel() :: %Nostrum.Struct.Channel{
+  application_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  applied_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  available_tags: [<a href="#t:forum_tag/0">forum_tag</a>()],
+  bitrate: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_auto_archive_duration: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_reaction_emoji: <a href="#t:default_reaction_emoji/0">default_reaction_emoji</a>(),
+  default_thread_rate_limit_per_user: <a href="#t:default_thread_rate_limit_per_user/0">default_thread_rate_limit_per_user</a>(),
+  guild_id: <a href="#t:guild_id/0">guild_id</a>(),
+  icon: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  id: <a href="#t:id/0">id</a>(),
+  last_message_id: <a href="#t:last_message_id/0">last_message_id</a>(),
+  last_pin_timestamp: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  message_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  name: <a href="#t:name/0">name</a>(),
+  newly_created: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  nsfw: <a href="#t:nsfw/0">nsfw</a>(),
+  owner_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  parent_id: <a href="#t:parent_id/0">parent_id</a>(),
+  permission_overwrites: <a href="#t:permission_overwrites/0">permission_overwrites</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  position: <a href="#t:position/0">position</a>(),
+  rate_limit_per_user: <a href="#t:rate_limit_per_user/0">rate_limit_per_user</a>(),
+  recipients: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rtc_region: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  thread_metadata: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  topic: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  type: <a href="#t:type/0">type</a>(),
+  user_limit: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+<p>Type 15 a guild forum channel.</p>
+  </section>
+</section>
+<section class="detail" id="t:guild_id/0">
+
+  <div class="detail-header">
+    <a href="#t:guild_id/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">guild_id()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L175" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> guild_id() :: <a href="Nostrum.Struct.Guild.html#t:id/0">Nostrum.Struct.Guild.id</a>()</pre>
+
+      </div>
+
+<p>The id of the guild the channel is located in.</p>
+  </section>
+</section>
+<section class="detail" id="t:guild_news_channel/0">
+
+  <div class="detail-header">
+    <a href="#t:guild_news_channel/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">guild_news_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L507" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> guild_news_channel() :: %Nostrum.Struct.Channel{
+  application_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  applied_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  available_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  bitrate: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_auto_archive_duration: <a href="#t:default_auto_archive_duration/0">default_auto_archive_duration</a>(),
+  default_reaction_emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_thread_rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  guild_id: <a href="#t:guild_id/0">guild_id</a>(),
+  icon: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  id: <a href="#t:id/0">id</a>(),
+  last_message_id: <a href="#t:last_message_id/0">last_message_id</a>(),
+  last_pin_timestamp: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  message_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  name: <a href="#t:name/0">name</a>(),
+  newly_created: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  nsfw: <a href="#t:nsfw/0">nsfw</a>(),
+  owner_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  parent_id: <a href="#t:parent_id/0">parent_id</a>(),
+  permission_overwrites: <a href="#t:permission_overwrites/0">permission_overwrites</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  position: <a href="#t:position/0">position</a>(),
+  rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  recipients: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rtc_region: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  thread_metadata: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  topic: <a href="#t:topic/0">topic</a>(),
+  type: 5,
+  user_limit: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+<p>Type 5 partial channel object representing a news channel.</p>
+  </section>
+</section>
+<section class="detail" id="t:guild_news_thread_channel/0">
+
+  <div class="detail-header">
+    <a href="#t:guild_news_thread_channel/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">guild_news_thread_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L540" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> guild_news_thread_channel() :: %Nostrum.Struct.Channel{
+  application_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  applied_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  available_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  bitrate: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_auto_archive_duration: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_reaction_emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_thread_rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  guild_id: <a href="#t:guild_id/0">guild_id</a>(),
+  icon: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  id: <a href="#t:id/0">id</a>(),
+  last_message_id: <a href="#t:last_message_id/0">last_message_id</a>(),
+  last_pin_timestamp: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="#t:member_count/0">member_count</a>(),
+  message_count: <a href="#t:message_count/0">message_count</a>(),
+  name: <a href="#t:name/0">name</a>(),
+  newly_created: <a href="#t:newly_created/0">newly_created</a>(),
+  nsfw: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  owner_id: <a href="#t:owner_id/0">owner_id</a>(),
+  parent_id: <a href="#t:parent_id/0">parent_id</a>(),
+  permission_overwrites: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  position: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rate_limit_per_user: <a href="#t:rate_limit_per_user/0">rate_limit_per_user</a>(),
+  recipients: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rtc_region: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  thread_metadata: <a href="#t:thread_metadata/0">thread_metadata</a>(),
+  topic: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  type: <a href="#t:type/0">type</a>(),
+  user_limit: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+<p>Type 10 partial channel object representing a news thread.</p>
+  </section>
+</section>
+<section class="detail" id="t:guild_private_thread_channel/0">
+
+  <div class="detail-header">
+    <a href="#t:guild_private_thread_channel/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">guild_private_thread_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L579" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> guild_private_thread_channel() :: %Nostrum.Struct.Channel{
+  application_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  applied_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  available_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  bitrate: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_auto_archive_duration: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_reaction_emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_thread_rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  guild_id: <a href="#t:guild_id/0">guild_id</a>(),
+  icon: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  id: <a href="#t:id/0">id</a>(),
+  last_message_id: <a href="#t:last_message_id/0">last_message_id</a>(),
+  last_pin_timestamp: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="#t:member_count/0">member_count</a>(),
+  message_count: <a href="#t:message_count/0">message_count</a>(),
+  name: <a href="#t:name/0">name</a>(),
+  newly_created: <a href="#t:newly_created/0">newly_created</a>(),
+  nsfw: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  owner_id: <a href="#t:owner_id/0">owner_id</a>(),
+  parent_id: <a href="#t:parent_id/0">parent_id</a>(),
+  permission_overwrites: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  position: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rate_limit_per_user: <a href="#t:rate_limit_per_user/0">rate_limit_per_user</a>(),
+  recipients: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rtc_region: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  thread_metadata: <a href="#t:thread_metadata/0">thread_metadata</a>(),
+  topic: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  type: <a href="#t:type/0">type</a>(),
+  user_limit: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+<p>Type 12 partial channel object representing a private thread.</p>
+  </section>
+</section>
+<section class="detail" id="t:guild_public_thread_channel/0">
+
+  <div class="detail-header">
+    <a href="#t:guild_public_thread_channel/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">guild_public_thread_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L559" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> guild_public_thread_channel() :: %Nostrum.Struct.Channel{
+  application_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  applied_tags: <a href="#t:applied_tags/0">applied_tags</a>(),
+  available_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  bitrate: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_auto_archive_duration: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_reaction_emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_thread_rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  guild_id: <a href="#t:guild_id/0">guild_id</a>(),
+  icon: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  id: <a href="#t:id/0">id</a>(),
+  last_message_id: <a href="#t:last_message_id/0">last_message_id</a>(),
+  last_pin_timestamp: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="#t:member_count/0">member_count</a>(),
+  message_count: <a href="#t:message_count/0">message_count</a>(),
+  name: <a href="#t:name/0">name</a>(),
+  newly_created: <a href="#t:newly_created/0">newly_created</a>(),
+  nsfw: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  owner_id: <a href="#t:owner_id/0">owner_id</a>(),
+  parent_id: <a href="#t:parent_id/0">parent_id</a>(),
+  permission_overwrites: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  position: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rate_limit_per_user: <a href="#t:rate_limit_per_user/0">rate_limit_per_user</a>(),
+  recipients: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rtc_region: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  thread_metadata: <a href="#t:thread_metadata/0">thread_metadata</a>(),
+  topic: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  type: <a href="#t:type/0">type</a>(),
+  user_limit: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+<p>Type 11 partial channel object representing a standard thread.</p>
+  </section>
+</section>
+<section class="detail" id="t:guild_stage_voice_channel/0">
+
+  <div class="detail-header">
+    <a href="#t:guild_stage_voice_channel/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">guild_stage_voice_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L598" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> guild_stage_voice_channel() :: %Nostrum.Struct.Channel{
+  application_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  applied_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  available_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  bitrate: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_auto_archive_duration: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_reaction_emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_thread_rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  guild_id: <a href="#t:guild_id/0">guild_id</a>(),
+  icon: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  id: <a href="#t:id/0">id</a>(),
+  last_message_id: <a href="#t:last_message_id/0">last_message_id</a>(),
+  last_pin_timestamp: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="#t:member_count/0">member_count</a>(),
+  message_count: <a href="#t:message_count/0">message_count</a>(),
+  name: <a href="#t:name/0">name</a>(),
+  newly_created: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  nsfw: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  owner_id: <a href="#t:owner_id/0">owner_id</a>(),
+  parent_id: <a href="#t:parent_id/0">parent_id</a>(),
+  permission_overwrites: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  position: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rate_limit_per_user: <a href="#t:rate_limit_per_user/0">rate_limit_per_user</a>(),
+  recipients: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rtc_region: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  thread_metadata: <a href="#t:thread_metadata/0">thread_metadata</a>(),
+  topic: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  type: <a href="#t:type/0">type</a>(),
+  user_limit: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+<p>Type 13 channel object representing a stage channel.</p>
+  </section>
+</section>
+<section class="detail" id="t:guild_store_channel/0">
+
+  <div class="detail-header">
+    <a href="#t:guild_store_channel/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">guild_store_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L525" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> guild_store_channel() :: %Nostrum.Struct.Channel{
+  application_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  applied_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  available_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  bitrate: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_auto_archive_duration: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_reaction_emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_thread_rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  guild_id: <a href="#t:guild_id/0">guild_id</a>(),
+  icon: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  id: <a href="#t:id/0">id</a>(),
+  last_message_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  last_pin_timestamp: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  message_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  name: <a href="#t:name/0">name</a>(),
+  newly_created: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  nsfw: <a href="#t:nsfw/0">nsfw</a>(),
+  owner_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  parent_id: <a href="#t:parent_id/0">parent_id</a>(),
+  permission_overwrites: <a href="#t:permission_overwrites/0">permission_overwrites</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  position: <a href="#t:position/0">position</a>(),
+  rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  recipients: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rtc_region: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  thread_metadata: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  topic: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  type: <a href="#t:type/0">type</a>(),
+  user_limit: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+<p>Type 6 partial channel object representing a store channel.</p>
+  </section>
+</section>
+<section class="detail" id="t:guild_text_channel/0">
+
+  <div class="detail-header">
+    <a href="#t:guild_text_channel/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">guild_text_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L429" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> guild_text_channel() :: %Nostrum.Struct.Channel{
+  application_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  applied_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  available_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  bitrate: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_auto_archive_duration: <a href="#t:default_auto_archive_duration/0">default_auto_archive_duration</a>(),
+  default_reaction_emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_thread_rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  guild_id: <a href="#t:guild_id/0">guild_id</a>(),
+  icon: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  id: <a href="#t:id/0">id</a>(),
+  last_message_id: <a href="#t:last_message_id/0">last_message_id</a>(),
+  last_pin_timestamp: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  message_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  name: <a href="#t:name/0">name</a>(),
+  newly_created: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  nsfw: <a href="#t:nsfw/0">nsfw</a>(),
+  owner_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  parent_id: <a href="#t:parent_id/0">parent_id</a>(),
+  permission_overwrites: <a href="#t:permission_overwrites/0">permission_overwrites</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  position: <a href="#t:position/0">position</a>(),
+  rate_limit_per_user: <a href="#t:rate_limit_per_user/0">rate_limit_per_user</a>(),
+  recipients: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rtc_region: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  thread_metadata: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  topic: <a href="#t:topic/0">topic</a>(),
+  type: <a href="#t:type/0">type</a>(),
+  user_limit: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+<p>Type 0 partial channel object representing a text channel within a guild.</p>
+  </section>
 </section>
 <section class="detail" id="t:guild_voice_channel/0">
+
   <div class="detail-header">
     <a href="#t:guild_voice_channel/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">guild_voice_channel()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L157" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">guild_voice_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L458" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>guild_voice_channel() :: %Nostrum.Struct.Channel{
-  application_id: nil,
+
+          <pre translate="no"><span class="attribute">@type</span> guild_voice_channel() :: %Nostrum.Struct.Channel{
+  application_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  applied_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  available_tags: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   bitrate: <a href="#t:bitrate/0">bitrate</a>(),
+  default_auto_archive_duration: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_reaction_emoji: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  default_thread_rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   guild_id: <a href="#t:guild_id/0">guild_id</a>(),
-  icon: nil,
+  icon: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   id: <a href="#t:id/0">id</a>(),
-  last_message_id: nil,
-  last_pin_timestamp: nil,
+  last_message_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  last_pin_timestamp: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  member_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  message_count: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   name: <a href="#t:name/0">name</a>(),
+  newly_created: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   nsfw: <a href="#t:nsfw/0">nsfw</a>(),
-  owner_id: nil,
+  owner_id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   parent_id: <a href="#t:parent_id/0">parent_id</a>(),
   permission_overwrites: <a href="#t:permission_overwrites/0">permission_overwrites</a>(),
+  permissions: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   position: <a href="#t:position/0">position</a>(),
-  recipients: nil,
-  topic: nil,
+  rate_limit_per_user: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  recipients: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  rtc_region: <a href="#t:rtc_region/0">rtc_region</a>(),
+  thread_metadata: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  topic: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   type: 2,
-  user_limit: <a href="#t:user_limit/0">user_limit</a>()
+  user_limit: <a href="#t:user_limit/0">user_limit</a>(),
+  video_quality_mode: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
 }</pre>
+
       </div>
 
-<p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a voice channel in a guild.</p>  </section>
+<p>Type 2 partial channel object representing an audio channel within a guild.</p>
+  </section>
 </section>
 <section class="detail" id="t:icon/0">
+
   <div class="detail-header">
     <a href="#t:icon/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">icon()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L94" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">icon()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L241" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>icon() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> icon() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil</pre>
+
       </div>
 
-<p>The icon hash of the channel</p>  </section>
+<p>The hash of the channels icon.</p>
+  </section>
 </section>
 <section class="detail" id="t:id/0">
+
   <div class="detail-header">
     <a href="#t:id/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">id()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L61" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">id()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L163" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>id() :: <a href="Nostrum.Snowflake.html#t:t/0">Nostrum.Snowflake.t</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> id() :: <a href="Nostrum.Snowflake.html#t:t/0">Nostrum.Snowflake.t</a>()</pre>
+
       </div>
 
-<p>The channel's id</p>  </section>
+<p>The id of the channel object.</p>
+  </section>
+</section>
+<section class="detail" id="t:join_timestamp/0">
+
+  <div class="detail-header">
+    <a href="#t:join_timestamp/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">join_timestamp()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L362" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> join_timestamp() :: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>()</pre>
+
+      </div>
+
+<p>When the user joined the thread.</p>
+  </section>
 </section>
 <section class="detail" id="t:last_message_id/0">
+
   <div class="detail-header">
     <a href="#t:last_message_id/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">last_message_id()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L82" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">last_message_id()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L207" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>last_message_id() :: <a href="Nostrum.Struct.Message.html#t:id/0">Nostrum.Struct.Message.id</a>() | nil</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> last_message_id() :: <a href="Nostrum.Struct.Message.html#t:id/0">Nostrum.Struct.Message.id</a>() | nil</pre>
+
       </div>
 
-<p>Id of the last message sent</p>  </section>
+<p>The id of the last message sent in the channel.</p><p>For <code class="inline">GUILD_FORUM</code> channels, this is the last thread created in the channel.</p>
+  </section>
 </section>
 <section class="detail" id="t:last_pin_timestamp/0">
+
   <div class="detail-header">
     <a href="#t:last_pin_timestamp/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">last_pin_timestamp()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L106" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">last_pin_timestamp()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L267" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>last_pin_timestamp() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> last_pin_timestamp() :: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>() | nil</pre>
+
       </div>
 
-<p>When the last pinned message was pinned</p>  </section>
+<p>Timestamp for the last pinned message.</p>
+  </section>
+</section>
+<section class="detail" id="t:locked/0">
+
+  <div class="detail-header">
+    <a href="#t:locked/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">locked()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L320" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> locked() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>The threads locked status.</p>
+  </section>
+</section>
+<section class="detail" id="t:member/0">
+
+  <div class="detail-header">
+    <a href="#t:member/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">member()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L345" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> member() :: %{
+  id: <a href="#t:id/0">id</a>(),
+  user_id: <a href="#t:user_id/0">user_id</a>(),
+  join_timestamp: <a href="#t:join_timestamp/0">join_timestamp</a>(),
+  flags: <a href="#t:flags/0">flags</a>()
+}</pre>
+
+      </div>
+
+<p>Present when the bot joins a thread.</p><p>Note: This is omitted on threads that the bot can immediately access on <code class="inline">:GUILD_CREATE</code> events received.</p>
+  </section>
+</section>
+<section class="detail" id="t:member_count/0">
+
+  <div class="detail-header">
+    <a href="#t:member_count/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">member_count()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L295" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> member_count() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | nil</pre>
+
+      </div>
+
+<p>Approximate count of members in a thread, capped at 50.</p>
+  </section>
+</section>
+<section class="detail" id="t:message_count/0">
+
+  <div class="detail-header">
+    <a href="#t:message_count/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">message_count()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L289" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> message_count() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | nil</pre>
+
+      </div>
+
+<p>Approximate count of messages in a thread, capped at 50.</p>
+  </section>
 </section>
 <section class="detail" id="t:name/0">
+
   <div class="detail-header">
     <a href="#t:name/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">name()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L73" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">name()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L190" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>name() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> name() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
       </div>
 
-<p>The name of the channel</p>  </section>
+<p>The name of the channel.</p>
+  </section>
+</section>
+<section class="detail" id="t:newly_created/0">
+
+  <div class="detail-header">
+    <a href="#t:newly_created/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">newly_created()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L393" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.1)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> newly_created() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | nil</pre>
+
+      </div>
+
+<p>Included only in the <code class="inline">THREAD_CREATE</code> event.</p>
+  </section>
 </section>
 <section class="detail" id="t:nsfw/0">
+
   <div class="detail-header">
     <a href="#t:nsfw/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">nsfw()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L79" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">nsfw()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L200" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>nsfw() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> nsfw() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
       </div>
 
-<p>If the channel is nsfw</p>  </section>
+<p>Whether the NSFW setting is enabled for this channel.</p>
+  </section>
 </section>
 <section class="detail" id="t:owner_id/0">
+
   <div class="detail-header">
     <a href="#t:owner_id/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">owner_id()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L97" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">owner_id()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L248" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>owner_id() :: <a href="Nostrum.Struct.User.html#t:id/0">Nostrum.Struct.User.id</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> owner_id() :: <a href="Nostrum.Struct.User.html#t:id/0">Nostrum.Struct.User.id</a>()</pre>
+
       </div>
 
-<p>The id of the DM creator</p>  </section>
+<p>The id of the user of a group direct message or thread.</p><p>This applies to user created channels.</p>
+  </section>
 </section>
 <section class="detail" id="t:parent_id/0">
+
   <div class="detail-header">
     <a href="#t:parent_id/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">parent_id()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L103" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">parent_id()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L262" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>parent_id() :: <a href="#t:id/0">Nostrum.Struct.Channel.id</a>() | nil</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> parent_id() :: <a href="#t:id/0">id</a>() | nil</pre>
+
       </div>
 
-<p>The id of the parent category for a channel</p>  </section>
+<p>The id of the parent channel that this channel is located under.</p><p>For threads, that is the channel that contains the thread. For regular channels, it is the category that the channel is located under.</p>
+  </section>
 </section>
 <section class="detail" id="t:permission_overwrites/0">
+
   <div class="detail-header">
     <a href="#t:permission_overwrites/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">permission_overwrites()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L70" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">permission_overwrites()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L185" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>permission_overwrites() :: [<a href="Nostrum.Struct.Overwrite.html#t:t/0">Nostrum.Struct.Overwrite.t</a>()]</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> permission_overwrites() :: [<a href="Nostrum.Struct.Overwrite.html#t:t/0">Nostrum.Struct.Overwrite.t</a>()]</pre>
+
       </div>
 
-<p>The list of overwrites</p>  </section>
+<p>A list of permission overwrites applied to the channel.</p>
+  </section>
+</section>
+<section class="detail" id="t:permissions/0">
+
+  <div class="detail-header">
+    <a href="#t:permissions/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">permissions()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L387" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> permissions() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>Computed permissions of the invoking user.</p><p>Permissions for the invoking user in the channel, including overwrites, only included when part of the resolved data received on a slash command interaction</p>
+  </section>
 </section>
 <section class="detail" id="t:position/0">
+
   <div class="detail-header">
     <a href="#t:position/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">position()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L67" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">position()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L180" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>position() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> position() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
       </div>
 
-<p>The ordered position of the channel</p>  </section>
+<p>The position of the channel in the sidebar of the guild.</p>
+  </section>
+</section>
+<section class="detail" id="t:rate_limit_per_user/0">
+
+  <div class="detail-header">
+    <a href="#t:rate_limit_per_user/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">rate_limit_per_user()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L220" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> rate_limit_per_user() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | nil</pre>
+
+      </div>
+
+<p>The users rate limit.</p><p>Amount of seconds a user has to wait before sending another message (0-21600); bots, as well as users with the permission manage_messages or manage_channel, are unaffected</p>
+  </section>
 </section>
 <section class="detail" id="t:recipients/0">
+
   <div class="detail-header">
     <a href="#t:recipients/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">recipients()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L91" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">recipients()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L236" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>recipients() :: [<a href="Nostrum.Struct.User.html#t:t/0">Nostrum.Struct.User.t</a>()]</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> recipients() :: [<a href="Nostrum.Struct.User.html#t:t/0">Nostrum.Struct.User.t</a>()]</pre>
+
       </div>
 
-<p>The recipients of the DM</p>  </section>
+<p>A list of users in a group DM.</p>
+  </section>
 </section>
-<section class="detail" id="t:t/0">
+<section class="detail" id="t:rtc_region/0">
+
   <div class="detail-header">
-    <a href="#t:t/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+    <a href="#t:rtc_region/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">t()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L244" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">rtc_region()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L275" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>t() ::
+
+          <pre translate="no"><span class="attribute">@type</span> rtc_region() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil</pre>
+
+      </div>
+
+<p>Region id for the channel.</p><p>More information about <em>region ids</em> can be found on the <a href="https://discord.com/developers/docs/resources/voice#voice-region-object">Discord API Voice Region Object Documentation</a>.</p>
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L672" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() ::
   <a href="#t:guild_text_channel/0">guild_text_channel</a>()
   | <a href="#t:dm_channel/0">dm_channel</a>()
   | <a href="#t:guild_voice_channel/0">guild_voice_channel</a>()
   | <a href="#t:group_dm_channel/0">group_dm_channel</a>()
-  | <a href="#t:channel_category/0">channel_category</a>()</pre>
+  | <a href="#t:guild_category_channel/0">guild_category_channel</a>()
+  | <a href="#t:guild_news_channel/0">guild_news_channel</a>()
+  | <a href="#t:guild_store_channel/0">guild_store_channel</a>()
+  | <a href="#t:guild_news_thread_channel/0">guild_news_thread_channel</a>()
+  | <a href="#t:guild_public_thread_channel/0">guild_public_thread_channel</a>()
+  | <a href="#t:guild_private_thread_channel/0">guild_private_thread_channel</a>()
+  | <a href="#t:guild_stage_voice_channel/0">guild_stage_voice_channel</a>()
+  | <a href="#t:guild_forum_channel/0">guild_forum_channel</a>()</pre>
+
       </div>
 
+<p>All valid channel types.</p>
   </section>
 </section>
 <section class="detail" id="t:text_channel/0">
+
   <div class="detail-header">
     <a href="#t:text_channel/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">text_channel()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L234" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">text_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L657" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This type is deprecated. See t.0.
+    </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> text_channel() :: <a href="#t:guild_text_channel/0">guild_text_channel</a>() | <a href="#t:dm_channel/0">dm_channel</a>() | <a href="#t:group_dm_channel/0">group_dm_channel</a>()</pre>
+
+      </div>
+
+<p>All valid text channels.</p>
+  </section>
+</section>
+<section class="detail" id="t:thread_metadata/0">
+
+  <div class="detail-header">
+    <a href="#t:thread_metadata/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">thread_metadata()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L301" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>text_channel() :: <a href="#t:guild_text_channel/0">guild_text_channel</a>() | <a href="#t:dm_channel/0">dm_channel</a>() | <a href="#t:group_dm_channel/0">group_dm_channel</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> thread_metadata() :: %{
+  archived: <a href="#t:archived/0">archived</a>(),
+  auto_archive_duration: <a href="#t:auto_archive_duration/0">auto_archive_duration</a>(),
+  archive_timestamp: <a href="#t:archive_timestamp/0">archive_timestamp</a>(),
+  locked: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  invitable: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | nil,
+  create_timestamp: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>() | nil
+}</pre>
+
       </div>
 
-<p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a text channel.</p>  </section>
+<p>Thread-specific fields not needed by other channels.</p>
+  </section>
 </section>
 <section class="detail" id="t:topic/0">
+
   <div class="detail-header">
     <a href="#t:topic/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">topic()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L76" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">topic()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L195" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>topic() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> topic() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
       </div>
 
-<p>Current channel topic</p>  </section>
+<p>The topic of the channel.</p>
+  </section>
+</section>
+<section class="detail" id="t:type/0">
+
+  <div class="detail-header">
+    <a href="#t:type/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">type()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L170" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> type() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+      </div>
+
+<p>The type of channel.</p><p>More information about <em>Discord Channel Types</em> can be found under the <a href="#module-channel-types"><code class="inline">types</code></a> on the <a href="https://discord.com/developers/docs/resources/channel#channel-object-channel-types">Discord API Channel Type Documentation</a>.</p>
+  </section>
+</section>
+<section class="detail" id="t:user_id/0">
+
+  <div class="detail-header">
+    <a href="#t:user_id/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">user_id()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L356" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> user_id() :: <a href="Nostrum.Snowflake.html#t:t/0">Nostrum.Snowflake.t</a>() | nil</pre>
+
+      </div>
+
+<p>User id of the threads creator.</p>
+  </section>
 </section>
 <section class="detail" id="t:user_limit/0">
+
   <div class="detail-header">
     <a href="#t:user_limit/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">user_limit()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L88" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">user_limit()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L231" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>user_limit() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> user_limit() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
       </div>
 
-<p>The user limit of the voice channel</p>  </section>
+<p>The user limit of a voice channel.</p>
+  </section>
+</section>
+<section class="detail" id="t:video_quality_mode/0">
+
+  <div class="detail-header">
+    <a href="#t:video_quality_mode/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">video_quality_mode()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L283" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(since 0.5.0)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> video_quality_mode() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | nil</pre>
+
+      </div>
+
+<p>The video quality mode of the channel.</p><p>More information about <em>video quality modes</em> can be found on the <a href="https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes">Discord API Video Quality Mode Documentation</a>.</p>
+  </section>
 </section>
 <section class="detail" id="t:voice_channel/0">
+
   <div class="detail-header">
     <a href="#t:voice_channel/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">voice_channel()</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L242" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">voice_channel()</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L667" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
+    <div class="deprecated">
+      This type is deprecated. See t:guild_voice_channel/0.
+    </div>
+
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>voice_channel() :: <a href="#t:guild_voice_channel/0">guild_voice_channel</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@type</span> voice_channel() :: <a href="#t:guild_voice_channel/0">guild_voice_channel</a>()</pre>
+
       </div>
 
-<p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a voice channel.</p>  </section>
+<p>A <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> that represents a voice channel</p>
+  </section>
 </section>
-          </div>
-        </section>
-        <section id="functions" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#functions">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Functions          </h1>
-          <div class="functions-list">
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Functions
+    </h1>
+    <div class="functions-list">
 <section class="detail" id="mention/1">
+
   <div class="detail-header">
     <a href="#mention/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
+      <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">mention(channel)</h1>
-      <a href="https://github.com/kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L263" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
+    <h1 class="signature" translate="no">mention(channel)</h1>
+
+      <a href="https://github.com/Kraigie/nostrum/blob/master/lib/nostrum/struct/channel.ex#L706" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
+
+
   </div>
 
   <section class="docstring">
-      <h2>Specs</h2>
+
       <div class="specs">
-          <pre>mention(<a href="#t:t/0">t</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+          <pre translate="no"><span class="attribute">@spec</span> mention(<a href="#t:t/0">t</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
       </div>
 
-<p>Formats a <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> into a mention.</p><h2 id="mention/1-examples" class="section-heading">
-  <a href="#mention/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+<p>Convert a channel into a mention.</p><p>Handles the conversion of a <a href="Nostrum.Struct.Channel.html#content"><code class="inline">Nostrum.Struct.Channel</code></a> into the required format to <em>mention</em> the channel within a message. Mentioning the channel will provide a clickable link to take the user to the channel.</p><h2 id="mention/1-parameters" class="section-heading">
+  <a href="#mention/1-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">parameters</p>
+  </a>
+  Parameters
+</h2>
+<ul><li>channel: <a href="#t:t/0"><code class="inline">Nostrum.Struct.Channel.t/0</code></a></li></ul><h2 id="mention/1-examples" class="section-heading">
+  <a href="#mention/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
   Examples
 </h2>
-<pre><code class="Elixir">iex&gt; channel = %Nostrum.Struct.Channel{id: 381889573426429952}
-...&gt; Nostrum.Struct.Channel.mention(channel)
-&quot;&lt;#381889573426429952&gt;&quot;</code></pre>  </section>
+<pre><code class="makeup elixir" translate="no"><span class="nc">Nostrum.Cache.ChannelCache</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="9367433207-1">(</span><span class="mi">381889573426429952</span><span class="p" data-group-id="9367433207-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Nostrum.Struct.Channel</span><span class="o">.</span><span class="n">mention</span><span class="p" data-group-id="9367433207-2">(</span><span class="p" data-group-id="9367433207-2">)</span><span class="w">
+</span><span class="s">&quot;&lt;#381889573426429952&gt;&quot;</span><span class="w">
+</span></code></pre>
+  </section>
 </section>
-          </div>
-        </section>
+
+    </div>
+  </section>
+
       <footer class="footer">
         <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/nostrum/0.9.0-alpha3" class="footer-hex-package">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/nostrum/0.9.0-alpha3/show/lib/nostrum/struct/channel.ex">current file</a>)
+
+            </span>
+
           <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.25.1) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="Nostrum.epub" title="ePub version">
+                Download ePub version
+              </a>
+
           </span>
         </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.4) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>
