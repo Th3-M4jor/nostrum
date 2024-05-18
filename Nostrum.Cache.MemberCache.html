@@ -5,16 +5,16 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.32.1">
-    <meta name="project" content="Nostrum v0.9.0">
+    <meta name="project" content="Nostrum v0.9.1">
 
 
-    <title>Nostrum.Cache.MemberCache — Nostrum v0.9.0</title>
+    <title>Nostrum.Cache.MemberCache — Nostrum v0.9.1</title>
     <link rel="stylesheet" href="dist/html-elixir-2C5PUTIB.css" />
 
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-IHH6HKET.js"></script>
-    <script src="dist/sidebar_items-F09595C4.js"></script>
+    <script src="dist/sidebar_items-125F8E10.js"></script>
     <script src="docs_config.js"></script>
     <script async src="dist/html-GXQ6W6IF.js"></script>
 
@@ -55,7 +55,7 @@
 Nostrum
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v0.9.0
+          v0.9.1
         </div>
       </div>
     </div>
@@ -133,7 +133,7 @@ Pages
       </a>
 
     <span translate="no">Nostrum.Cache.MemberCache</span> <small>behaviour</small>
-    <small class="app-vsn" translate="no">(Nostrum v0.9.0)</small>
+    <small class="app-vsn" translate="no">(Nostrum v0.9.1)</small>
 
   </h1>
 
@@ -617,7 +617,7 @@ when acc: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term
   <span class="text">Parameters</span>
 </h2>
 <ul><li><code class="inline">acc</code>: The initial accumulator. Also returned if no guild members were found.</li><li><code class="inline">guild_id</code>: The guild for which to reduce members.</li><li><code class="inline">fun</code>: Called for every element in the result. Takes a pair
-in the form <code class="inline">{member, acc)</code>, and must return the updated accumulator.</li></ul><h2 id="fold/4-return-value" class="section-heading">
+in the form <code class="inline">(member, acc)</code>, and must return the updated accumulator.</li></ul><h2 id="fold/4-return-value" class="section-heading">
   <a href="#fold/4-return-value" class="hover-link">
     <i class="ri-link-m" aria-hidden="true"></i>
   </a>
@@ -710,7 +710,7 @@ accumulator.</p><h2 id="fold_with_users/4-parameters" class="section-heading">
 </h2>
 <ul><li><code class="inline">acc</code> (<code class="inline">term()</code>): The initial accumulator. Also returned if no guild
 members were found.</li><li><code class="inline">guild_id</code> (<a href="Nostrum.Struct.Guild.html#t:id/0"><code class="inline">Nostrum.Struct.Guild.id/0</code></a>): The guild for which to reduce members.</li><li><code class="inline">fun</code> (<code class="inline">function()</code>): Called for every element in the result. Takes a pair
-in the form <code class="inline">{{member, user}, acc)</code>, and must return the updated accumulator.</li></ul><h2 id="fold_with_users/4-return-value" class="section-heading">
+in the form <code class="inline">({member, user}, acc)</code>, and must return the updated accumulator.</li></ul><h2 id="fold_with_users/4-return-value" class="section-heading">
   <a href="#fold_with_users/4-return-value" class="hover-link">
     <i class="ri-link-m" aria-hidden="true"></i>
   </a>
@@ -856,9 +856,9 @@ happen in practice.</p>
       <p>
 
           <span class="line">
-            <a href="https://hex.pm/packages/nostrum/0.9.0" class="footer-hex-package">Hex Package</a>
+            <a href="https://hex.pm/packages/nostrum/0.9.1" class="footer-hex-package">Hex Package</a>
 
-            <a href="https://preview.hex.pm/preview/nostrum/0.9.0">Hex Preview</a>
+            <a href="https://preview.hex.pm/preview/nostrum/0.9.1">Hex Preview</a>
 
           </span>
 
