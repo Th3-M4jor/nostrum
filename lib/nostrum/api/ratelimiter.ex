@@ -376,7 +376,8 @@ defmodule Nostrum.Api.Ratelimiter do
     {:keep_state, %{data | conn: conn_pid}}
   end
 
-  def connecting(:info, {:gun_up, conn_pid, _}, %{conn: conn_pid} = data) do
+  def connecting(:info, {:gun_up, conn_pid, protocol}, %{conn: conn_pid} = data) do
+    Nostrum.Telemetry.execute(~w[nostrum api ratelimiter connected]a, %{protocol: protocol})
     {:next_state, :connected, data}
   end
 
@@ -389,6 +390,7 @@ defmodule Nostrum.Api.Ratelimiter do
   end
 
   def connecting(:state_timeout, :connect_timeout, _data) do
+    Nostrum.Telemetry.execute(~w[nostrum api ratelimiter connect_timeout]a, %{})
     {:stop, :connect_timeout}
   end
 
@@ -416,6 +418,11 @@ defmodule Nostrum.Api.Ratelimiter do
       # the waiting line.
       {remaining, queue} when remaining in [0, :initial] or remaining_in_window == 0 ->
         entry = {payload, from}
+
+        Nostrum.Telemetry.execute(
+          ~w[nostrum api ratelimiter postponed]a,
+          %{bucket: bucket, global: false}
+        )
 
         data_with_this_queued =
           put_in(data, [:outstanding, bucket], {remaining, :queue.in(entry, queue)})
@@ -451,6 +458,11 @@ defmodule Nostrum.Api.Ratelimiter do
         entry = {payload, from}
 
         queue = :queue.new()
+
+        Nostrum.Telemetry.execute(
+          ~w[nostrum api ratelimiter postponed]a,
+          %{bucket: bucket, global: true}
+        )
 
         data_with_this_queued =
           put_in(data, [:outstanding, bucket], {:initial, :queue.in(entry, queue)})
@@ -878,6 +890,11 @@ defmodule Nostrum.Api.Ratelimiter do
     # of WebSocket. Force the connection to die.
     :ok = :gun.close(conn)
     :ok = :gun.flush(conn)
+
+    Nostrum.Telemetry.execute(
+      ~w[nostrum api ratelimiter disconnected]a,
+      %{}
+    )
 
     # Streams that we previously received `:gun_error` notifications for have
     # been requeued already, and we won't find them in the `running` list.
