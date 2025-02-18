@@ -56,6 +56,8 @@ defmodule Nostrum.Shard.Session do
 
   alias Nostrum.Shard.Session.Compression
 
+  alias Nostrum.TelemetryShim
+
   require Logger
 
   @behaviour :gen_statem
@@ -312,7 +314,7 @@ defmodule Nostrum.Shard.Session do
       ) do
     context = @compression_module.create_context()
 
-    Nostrum.Telemetry.execute(
+    TelemetryShim.execute(
       ~w[nostrum gateway shard connected]a,
       %{},
       %{shard_number: shard_num}
@@ -334,7 +336,7 @@ defmodule Nostrum.Shard.Session do
       ) do
     Logger.info("Re-established websocket connection")
 
-    Nostrum.Telemetry.execute(
+    TelemetryShim.execute(
       ~w[nostrum gateway shard connected]a,
       %{},
       %{shard_number: shard_num}
@@ -384,10 +386,10 @@ defmodule Nostrum.Shard.Session do
 
     case from_handle do
       {updated_data, :reconnect} ->
-        Nostrum.Telemetry.execute(
+        TelemetryShim.execute(
           ~w[nostrum gateway shard disconnected]a,
-          %{reason: :reconnect},
-          %{shard_number: data.shard_num}
+          %{},
+          %{shard_number: data.shard_num, reason: :reconnect}
         )
 
         Logger.info("Will reconnect in response to gateway event")
@@ -407,7 +409,7 @@ defmodule Nostrum.Shard.Session do
         stream: stream,
         shard_num: shard_num
       }) do
-    Nostrum.Telemetry.execute(
+    TelemetryShim.execute(
       ~w[nostrum gateway shard disconnected]a,
       %{reason: :unknown},
       %{shard_number: shard_num}
@@ -490,11 +492,17 @@ defmodule Nostrum.Shard.Session do
       :ok = :gun.ws_send(conn, stream, {:binary, Payload.heartbeat_payload(seq)})
       heartbeat_later = {:state_timeout, heartbeat_interval, request}
 
+      TelemetryShim.execute(
+        ~w[nostrum gateway shard heartbeat]a,
+        %{seq: seq},
+        %{shard_number: shard_num}
+      )
+
       {:keep_state, %{data | heartbeat_ack: false, last_heartbeat_send: DateTime.utc_now()},
        heartbeat_later}
     else
       # Our last heartbeat was not acknowledged. Disconnect and try to resume.
-      Nostrum.Telemetry.execute(
+      TelemetryShim.execute(
         ~w[nostrum gateway shard disconnected]a,
         %{reason: :heartbeat_timeout},
         %{shard_number: shard_num}

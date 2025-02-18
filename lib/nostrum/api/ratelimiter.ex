@@ -204,6 +204,8 @@ defmodule Nostrum.Api.Ratelimiter do
   alias Nostrum.Constants
   alias Nostrum.Error.ApiError
 
+  alias Nostrum.TelemetryShim
+
   require Logger
 
   @major_parameters ["channels", "guilds", "webhooks"]
@@ -377,7 +379,7 @@ defmodule Nostrum.Api.Ratelimiter do
   end
 
   def connecting(:info, {:gun_up, conn_pid, protocol}, %{conn: conn_pid} = data) do
-    Nostrum.Telemetry.execute(~w[nostrum api ratelimiter connected]a, %{protocol: protocol})
+    TelemetryShim.execute(~w[nostrum ratelimiter connected]a, %{}, %{protocol: protocol})
     {:next_state, :connected, data}
   end
 
@@ -390,7 +392,7 @@ defmodule Nostrum.Api.Ratelimiter do
   end
 
   def connecting(:state_timeout, :connect_timeout, _data) do
-    Nostrum.Telemetry.execute(~w[nostrum api ratelimiter connect_timeout]a, %{})
+    TelemetryShim.execute(~w[nostrum ratelimiter connect_timeout]a, %{})
     {:stop, :connect_timeout}
   end
 
@@ -419,8 +421,9 @@ defmodule Nostrum.Api.Ratelimiter do
       {remaining, queue} when remaining in [0, :initial] or remaining_in_window == 0 ->
         entry = {payload, from}
 
-        Nostrum.Telemetry.execute(
-          ~w[nostrum api ratelimiter postponed]a,
+        TelemetryShim.execute(
+          ~w[nostrum ratelimiter postponed]a,
+          %{},
           %{bucket: bucket, global: false}
         )
 
@@ -459,8 +462,9 @@ defmodule Nostrum.Api.Ratelimiter do
 
         queue = :queue.new()
 
-        Nostrum.Telemetry.execute(
-          ~w[nostrum api ratelimiter postponed]a,
+        TelemetryShim.execute(
+          ~w[nostrum ratelimiter postponed]a,
+          %{},
           %{bucket: bucket, global: true}
         )
 
@@ -891,8 +895,8 @@ defmodule Nostrum.Api.Ratelimiter do
     :ok = :gun.close(conn)
     :ok = :gun.flush(conn)
 
-    Nostrum.Telemetry.execute(
-      ~w[nostrum api ratelimiter disconnected]a,
+    TelemetryShim.execute(
+      ~w[nostrum ratelimiter disconnected]a,
       %{}
     )
 

@@ -1,5 +1,5 @@
 if Code.ensure_loaded?(:telmetry) do
-  defmodule Nostrum.Telemetry do
+  defmodule Nostrum.TelemetryShim do
     @moduledoc false
 
     defdelegate execute(event_name, measurements), to: :telemetry
@@ -9,7 +9,7 @@ if Code.ensure_loaded?(:telmetry) do
     defdelegate span(event_prefix, start_metadata, span_function), to: :telemetry
   end
 else
-  defmodule Nostrum.Telemetry do
+  defmodule Nostrum.TelemetryShim do
     @moduledoc false
 
     def span(_event, _meta, func) do
