@@ -1,4 +1,4 @@
-if Code.ensure_loaded?(:telmetry) do
+if Code.ensure_loaded?(:telemetry) do
   defmodule Nostrum.TelemetryShim do
     @moduledoc false
 
