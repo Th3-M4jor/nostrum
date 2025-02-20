@@ -2252,19 +2252,21 @@ defmodule Nostrum.Api do
 
   @spec request(map()) :: {:ok} | {:ok, String.t()} | error
   def request(request) do
+    telemetry_metadata = %{method: request.method, route: request.route}
+
     TelemetryShim.span(
       ~w[nostrum api request]a,
-      %{method: request.method, route: request.route},
+      telemetry_metadata,
       fn ->
         case Ratelimiter.queue(request) do
           {:ok} = result ->
-            {result, %{status: :ok}}
+            {result, Map.put(telemetry_metadata, :status, :ok)}
 
           {:ok, _response} = result ->
-            {result, %{status: :ok}}
+            {result, Map.put(telemetry_metadata, :status, :ok)}
 
           {:error, _error} = err ->
-            {err, %{status: :error}}
+            {err, Map.put(telemetry_metadata, :status, :error)}
         end
       end
     )
